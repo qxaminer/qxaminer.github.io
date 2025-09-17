@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://verofields.github.io/sitemap.xml
