@@ -228,6 +228,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   height: var(--header-height);
+  padding-right: var(--spacing-lg);
 }
 
 .nav__logo {
@@ -253,6 +254,7 @@ a:hover {
   display: flex;
   list-style: none;
   gap: var(--spacing-xl);
+  padding-right: var(--spacing-md);
 }
 
 .nav__link {
@@ -950,6 +952,7 @@ a:hover {
   
   .nav__container {
     padding: 0 var(--spacing-lg);
+    padding-right: var(--spacing-xl);
   }
   
   .nav__logo {
@@ -978,6 +981,7 @@ a:hover {
     flex-direction: column;
     gap: var(--spacing-2xl);
     text-align: center;
+    padding-right: 0;
   }
   
   .nav__link {
@@ -1179,24 +1183,60 @@ a:hover {
 }
 
 /* Dark mode support */
+[data-theme="dark"] {
+  --text-color: #ffffff;
+  --text-color-light: #b0b0b0;
+  --bg-color: #1a1a1a;
+  --bg-color-alt: #2a2a2a;
+  --bg-color-dark: #0f0f0f;
+  --border-color: #404040;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color-dark: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(26, 26, 26, 0.95);
+}
+
+[data-theme="dark"] .project__card,
+[data-theme="dark"] .skills__category,
+[data-theme="dark"] .about__stat,
+[data-theme="dark"] .contact__detail {
+  background: var(--bg-color-alt);
+}
+
+[data-theme="dark"] .about__highlight {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+[data-theme="dark"] .contact__input,
+[data-theme="dark"] .contact__textarea {
+  background: var(--bg-color-alt);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+/* Auto dark mode based on system preference */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --text-color: #ffffff;
     --text-color-light: #b0b0b0;
     --bg-color: #1a1a1a;
     --bg-color-alt: #2a2a2a;
+    --bg-color-dark: #0f0f0f;
     --border-color: #404040;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --shadow-color-dark: rgba(0, 0, 0, 0.5);
   }
   
-  .nav {
+  :root:not([data-theme="light"]) .nav {
     background: rgba(26, 26, 26, 0.95);
   }
   
-  .project__card,
-  .skills__category,
-  .about__stat {
+  :root:not([data-theme="light"]) .project__card,
+  :root:not([data-theme="light"]) .skills__category,
+  :root:not([data-theme="light"]) .about__stat,
+  :root:not([data-theme="light"]) .contact__detail {
     background: var(--bg-color-alt);
   }
 }
