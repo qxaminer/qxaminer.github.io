@@ -148,6 +148,10 @@ a:hover {
   margin-bottom: var(--spacing-4xl);
 }
 
+.about .section__header {
+  margin-bottom: var(--spacing-2xl);
+}
+
 .section__title {
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
@@ -160,6 +164,10 @@ a:hover {
   color: var(--text-color-light);
   max-width: 600px;
   margin: 0 auto;
+}
+
+.about .section__subtitle {
+  margin-bottom: var(--spacing-md);
 }
 
 /* ===== BUTTONS ===== */
@@ -463,6 +471,10 @@ a:hover {
   font-size: var(--font-size-lg);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--spacing-xl);
+}
+
+.about__text > .about__description:first-child {
+  margin-top: var(--spacing-sm);
 }
 
 .about__stats {
