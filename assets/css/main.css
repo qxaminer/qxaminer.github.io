@@ -226,6 +226,7 @@ a:hover {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--text-color);
+  padding: var(--spacing-sm) var(--spacing-md);
 }
 
 .nav__logo-text {
@@ -281,6 +282,8 @@ a:hover {
 .nav__toggle {
   flex-direction: column;
   gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  margin-right: var(--spacing-sm);
 }
 
 .nav__toggle-line {
@@ -889,6 +892,15 @@ a:hover {
     --container-padding: 1rem;
   }
   
+  .nav__container {
+    padding: 0 var(--spacing-lg);
+  }
+  
+  .nav__logo {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-2xl);
+  }
+  
   .nav__menu {
     position: fixed;
     top: 0;
@@ -919,6 +931,11 @@ a:hover {
   .nav__toggle,
   .nav__close {
     display: flex;
+  }
+  
+  .nav__toggle {
+    padding: var(--spacing-lg);
+    margin-right: var(--spacing-md);
   }
   
   .hero__content {
@@ -978,6 +995,20 @@ a:hover {
 }
 
 @media screen and (max-width: 480px) {
+  .nav__container {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .nav__logo {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-xl);
+  }
+  
+  .nav__toggle {
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-right: 0;
+  }
+  
   .hero__title-main {
     font-size: var(--font-size-3xl);
   }
