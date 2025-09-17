@@ -192,12 +192,23 @@
             <div class="projects__container container">
                 <div class="section__header">
                     <h2 class="section__title">Featured Projects</h2>
-                    <p class="section__subtitle">A selection of my recent work</p>
+                    <p class="section__subtitle">Exploring creativity across digital and traditional media</p>
+                </div>
+                
+                <!-- Project Filter Buttons -->
+                <div class="projects__filters">
+                    <button class="filter__btn active" data-filter="all">All Projects</button>
+                    <button class="filter__btn" data-filter="digital-art">Digital Art</button>
+                    <button class="filter__btn" data-filter="interactive">Interactive Projects</button>
+                    <button class="filter__btn" data-filter="ai-tools">AI Tools</button>
+                    <button class="filter__btn" data-filter="colored-pencil">Colored Pencil</button>
+                    <button class="filter__btn" data-filter="watercolor">Watercolor</button>
+                    <button class="filter__btn" data-filter="mixed-media">Mixed Media</button>
                 </div>
                 
                 <div class="projects__grid">
-                    <!-- Project 1 -->
-                    <article class="project__card">
+                    <!-- Digital Art Projects -->
+                    <article class="project__card" data-category="digital-art">
                         <div class="project__image">
                             <img src="assets/images/project-1.jpg" alt="Interactive Torus Visualization" class="project__img">
                             <div class="project__overlay">
@@ -219,15 +230,44 @@
                                 built with Processing and p5.js.
                             </p>
                             <div class="project__tags">
+                                <span class="project__tag">Processing</span>
                                 <span class="project__tag">p5.js</span>
-                                <span class="project__tag">WebGL</span>
-                                <span class="project__tag">Creative Coding</span>
+                                <span class="project__tag">3D Art</span>
                             </div>
                         </div>
                     </article>
                     
-                    <!-- Project 2 -->
-                    <article class="project__card">
+                    <article class="project__card" data-category="digital-art">
+                        <div class="project__image">
+                            <img src="assets/images/project-3.jpg" alt="ExcelPunx Portrait Generator" class="project__img">
+                            <div class="project__overlay">
+                                <div class="project__links">
+                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
+                                        <span>Live Demo</span>
+                                    </a>
+                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project__content">
+                            <h3 class="project__title">ExcelPunx</h3>
+                            <p class="project__description">
+                                Transform webcam portraits into Excel art using creative coding techniques 
+                                and computer vision algorithms.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">JavaScript</span>
+                                <span class="project__tag">Computer Vision</span>
+                                <span class="project__tag">Digital Art</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Interactive Projects -->
+                    <article class="project__card" data-category="interactive">
                         <div class="project__image">
                             <img src="assets/images/project-2.jpg" alt="Present Traveler App" class="project__img">
                             <div class="project__overlay">
@@ -256,38 +296,7 @@
                         </div>
                     </article>
                     
-                    <!-- Project 3 -->
-                    <article class="project__card">
-                        <div class="project__image">
-                            <img src="assets/images/project-3.jpg" alt="ExcelPunx Portrait Generator" class="project__img">
-                            <div class="project__overlay">
-                                <div class="project__links">
-                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
-                                        <span>Live Demo</span>
-                                    </a>
-                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
-                                        <span>GitHub</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="project__content">
-                            <h3 class="project__title">ExcelPunx</h3>
-                            <p class="project__description">
-                                Transform webcam portraits into Excel art using creative coding techniques 
-                                and computer vision algorithms.
-                            </p>
-                            <div class="project__tags">
-                                <span class="project__tag">JavaScript</span>
-                                <span class="project__tag">Computer Vision</span>
-                                <span class="project__tag">Creative Coding</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Project 4 -->
-                    <article class="project__card">
+                    <article class="project__card" data-category="interactive">
                         <div class="project__image">
                             <img src="assets/images/project-4.jpg" alt="SAAM Visualization System" class="project__img">
                             <div class="project__overlay">
@@ -316,10 +325,10 @@
                         </div>
                     </article>
                     
-                    <!-- Project 5 -->
-                    <article class="project__card">
+                    <!-- AI Tools -->
+                    <article class="project__card" data-category="ai-tools">
                         <div class="project__image">
-                            <img src="assets/images/project-5.jpg" alt="Full-Stack Application" class="project__img">
+                            <img src="assets/images/project-6.jpg" alt="AI Color Matching Tool" class="project__img">
                             <div class="project__overlay">
                                 <div class="project__links">
                                     <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
@@ -333,27 +342,26 @@
                         </div>
                         
                         <div class="project__content">
-                            <h3 class="project__title">OffOrg Platform</h3>
+                            <h3 class="project__title">AI Color Matching Tool</h3>
                             <p class="project__description">
-                                Full-stack web application with modern architecture, featuring 
-                                a React frontend and Python backend with comprehensive API design.
+                                AI-powered tool that analyzes photographs to recommend art supplies from 
+                                an artist's existing collection, bridging digital inspiration with physical creation.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag">React</span>
                                 <span class="project__tag">Python</span>
-                                <span class="project__tag">Full-Stack</span>
+                                <span class="project__tag">Computer Vision</span>
+                                <span class="project__tag">AI/ML</span>
                             </div>
                         </div>
                     </article>
                     
-                    <!-- Project 6 -->
-                    <article class="project__card">
+                    <article class="project__card" data-category="ai-tools">
                         <div class="project__image">
-                            <img src="assets/images/project-6.jpg" alt="AI/ML Project" class="project__img">
+                            <img src="assets/images/project-5.jpg" alt="Bias Mitigation Research" class="project__img">
                             <div class="project__overlay">
                                 <div class="project__links">
                                     <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
-                                        <span>Live Demo</span>
+                                        <span>Research Paper</span>
                                     </a>
                                     <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
                                         <span>GitHub</span>
@@ -363,15 +371,96 @@
                         </div>
                         
                         <div class="project__content">
-                            <h3 class="project__title">Shifter AI</h3>
+                            <h3 class="project__title">Archaeological Algorithms</h3>
                             <p class="project__description">
-                                Advanced machine learning project with custom model training, 
-                                fine-tuning, and deployment using modern ML frameworks.
+                                Research on AI systems designed to surface overlooked cultural value rather 
+                                than reinforce mainstream patterns, using Politensioner analysis framework.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag">Python</span>
-                                <span class="project__tag">Machine Learning</span>
-                                <span class="project__tag">LLaMA</span>
+                                <span class="project__tag">Research</span>
+                                <span class="project__tag">AI Ethics</span>
+                                <span class="project__tag">Cultural AI</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Colored Pencil Works -->
+                    <article class="project__card" data-category="colored-pencil">
+                        <div class="project__image">
+                            <img src="assets/images/colored-pencil-1.jpg" alt="Portrait Study" class="project__img">
+                            <div class="project__overlay">
+                                <div class="project__links">
+                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
+                                        <span>View Full Size</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project__content">
+                            <h3 class="project__title">Portrait Study Series</h3>
+                            <p class="project__description">
+                                Detailed colored pencil portraits exploring human expression and 
+                                the interplay of light and shadow in traditional media.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Colored Pencil</span>
+                                <span class="project__tag">Portrait</span>
+                                <span class="project__tag">Traditional Art</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Watercolor Works -->
+                    <article class="project__card" data-category="watercolor">
+                        <div class="project__image">
+                            <img src="assets/images/watercolor-1.jpg" alt="Landscape Study" class="project__img">
+                            <div class="project__overlay">
+                                <div class="project__links">
+                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
+                                        <span>View Full Size</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project__content">
+                            <h3 class="project__title">Atmospheric Landscapes</h3>
+                            <p class="project__description">
+                                Watercolor explorations of natural environments, capturing the 
+                                ephemeral qualities of light and atmosphere in fluid media.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Watercolor</span>
+                                <span class="project__tag">Landscape</span>
+                                <span class="project__tag">Plein Air</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Mixed Media -->
+                    <article class="project__card" data-category="mixed-media">
+                        <div class="project__image">
+                            <img src="assets/images/mixed-media-1.jpg" alt="Digital-Physical Hybrid" class="project__img">
+                            <div class="project__overlay">
+                                <div class="project__links">
+                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
+                                        <span>View Full Size</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project__content">
+                            <h3 class="project__title">Digital-Physical Hybrids</h3>
+                            <p class="project__description">
+                                Mixed media works that bridge digital and traditional techniques, 
+                                exploring the intersection of computational and physical creation.
+                            </p>
+                            <div class="project__tags">
+                                <span class="project__tag">Mixed Media</span>
+                                <span class="project__tag">Digital Hybrid</span>
+                                <span class="project__tag">Experimental</span>
                             </div>
                         </div>
                     </article>

@@ -564,6 +564,42 @@ a:hover {
 }
 
 /* ===== PROJECTS SECTION ===== */
+.projects__filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.filter__btn {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: transparent;
+  color: var(--text-color-light);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter__btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.filter__btn.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-color-white);
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -576,6 +612,14 @@ a:hover {
   overflow: hidden;
   box-shadow: 0 4px 20px var(--shadow-color);
   transition: var(--transition-normal);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.project__card.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
 }
 
 .project__card:hover {
@@ -982,6 +1026,15 @@ a:hover {
   
   .projects__grid {
     grid-template-columns: 1fr;
+  }
+  
+  .projects__filters {
+    gap: var(--spacing-sm);
+  }
+  
+  .filter__btn {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
   }
   
   .skills__content {
