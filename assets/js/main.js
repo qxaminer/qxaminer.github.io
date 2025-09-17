@@ -9,6 +9,8 @@ const navLinks = document.querySelectorAll('.nav__link');
 const sections = document.querySelectorAll('section[id]');
 const skillsSection = document.getElementById('skills');
 const contactForm = document.getElementById('contact-form');
+const filterButtons = document.querySelectorAll('.filter__btn');
+const projectCards = document.querySelectorAll('.project__card');
 
 // ===== MOBILE NAVIGATION =====
 // Show menu
@@ -89,6 +91,47 @@ function scrollActive() {
 }
 
 window.addEventListener('scroll', scrollActive);
+
+// ===== PROJECT FILTERING =====
+function initProjectFiltering() {
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Get filter value
+            const filterValue = button.getAttribute('data-filter');
+            
+            // Filter projects
+            filterProjects(filterValue);
+            
+            // Track filter usage
+            trackEvent('project_filter', {
+                filter: filterValue
+            });
+        });
+    });
+}
+
+function filterProjects(filter) {
+    projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        
+        if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+            // Staggered animation for showing cards
+            setTimeout(() => {
+                card.style.transform = 'scale(1)';
+                card.style.opacity = '1';
+            }, Math.random() * 200);
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
 
 // ===== SMOOTH SCROLLING =====
 // Smooth scrolling for navigation links
@@ -501,6 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypingAnimation();
     initParallaxEffects();
     initThemeToggle();
+    initProjectFiltering();
     
     // Set initial active nav link
     const homeLink = document.querySelector('.nav__link[href="#home"]');
