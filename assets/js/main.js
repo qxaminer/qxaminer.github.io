@@ -474,17 +474,46 @@ function initThemeToggle() {
         
         document.documentElement.setAttribute('data-theme', newTheme);
         themeToggle.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+        themeToggle.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
         
         // Save preference
         localStorage.setItem('theme', newTheme);
+        
+        // Track theme change
+        trackEvent('theme_toggle', {
+            theme: newTheme
+        });
     });
     
-    // Load saved theme
+    // Load saved theme or detect system preference
     const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
     if (savedTheme) {
         document.documentElement.setAttribute('data-theme', savedTheme);
         themeToggle.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+        themeToggle.setAttribute('aria-label', savedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    } else if (systemPrefersDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.innerHTML = '☀️';
+        themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeToggle.innerHTML = '🌙';
+        themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        localStorage.setItem('theme', 'light');
     }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+            themeToggle.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+    });
 }
 
 // ===== PERFORMANCE OPTIMIZATIONS =====
