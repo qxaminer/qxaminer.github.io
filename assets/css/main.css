@@ -1020,6 +1020,7 @@ a:hover {
     grid-template-columns: 1fr;
     text-align: center;
     gap: var(--spacing-2xl);
+    padding-top: var(--spacing-3xl);
   }
   
   .hero__title-main {
@@ -1100,6 +1101,10 @@ a:hover {
     font-size: var(--font-size-3xl);
   }
   
+  .hero__content {
+    padding-top: var(--spacing-4xl);
+  }
+
   .hero__buttons {
     flex-direction: column;
     align-items: center;
