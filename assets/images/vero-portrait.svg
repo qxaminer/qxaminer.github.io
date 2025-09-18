@@ -1,0 +1,53 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="portraitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#34495e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c3e50;stop-opacity:1" />
+    </linearGradient>
+    <filter id="vintage" x="0%" y="0%" width="100%" height="100%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.5"/>
+      <feColorMatrix type="saturate" values="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#portraitGrad)"/>
+  
+  <!-- Vintage texture overlay -->
+  <rect width="100%" height="100%" fill="#f4f4f4" opacity="0.1"/>
+  
+  <!-- Portrait silhouette -->
+  <ellipse cx="200" cy="160" rx="80" ry="100" fill="#1a1a1a" opacity="0.8"/>
+  
+  <!-- Face -->
+  <ellipse cx="200" cy="140" rx="60" ry="80" fill="#2c3e50"/>
+  
+  <!-- Hair -->
+  <ellipse cx="200" cy="100" rx="65" ry="50" fill="#1a1a1a"/>
+  
+  <!-- Facial features -->
+  <ellipse cx="185" cy="130" rx="8" ry="12" fill="#1a1a1a" opacity="0.7"/>
+  <ellipse cx="215" cy="130" rx="8" ry="12" fill="#1a1a1a" opacity="0.7"/>
+  <ellipse cx="200" cy="145" rx="4" ry="6" fill="#1a1a1a" opacity="0.6"/>
+  <ellipse cx="200" cy="160" rx="15" ry="8" fill="#1a1a1a" opacity="0.5"/>
+  
+  <!-- Beard -->
+  <ellipse cx="200" cy="180" rx="30" ry="25" fill="#1a1a1a" opacity="0.7"/>
+  
+  <!-- Shoulders/clothing -->
+  <rect x="120" y="240" width="160" height="160" rx="20" fill="#2c3e50"/>
+  
+  <!-- Vintage scratches and aging -->
+  <line x1="50" y1="80" x2="350" y2="90" stroke="#fff" stroke-width="0.5" opacity="0.3"/>
+  <line x1="30" y1="200" x2="370" y2="210" stroke="#fff" stroke-width="0.3" opacity="0.2"/>
+  <line x1="100" y1="350" x2="300" y2="360" stroke="#fff" stroke-width="0.4" opacity="0.3"/>
+  
+  <!-- Text overlay indicating placeholder -->
+  <text x="200" y="320" text-anchor="middle" fill="#666" font-family="Arial" font-size="14" opacity="0.6">
+    veroFields Portrait
+  </text>
+  <text x="200" y="340" text-anchor="middle" fill="#666" font-family="Arial" font-size="10" opacity="0.5">
+    (Replace with actual image)
+  </text>
+</svg>
