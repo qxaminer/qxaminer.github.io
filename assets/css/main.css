@@ -686,6 +686,7 @@ a:hover {
 
 .project__content {
   padding: var(--spacing-xl);
+  padding-top: var(--spacing-2xl); /* Extra top padding to clear rounded corners */
 }
 
 .project__title {
@@ -693,6 +694,7 @@ a:hover {
   font-weight: var(--font-weight-semibold);
   color: var(--text-color);
   margin-bottom: var(--spacing-md);
+  margin-top: 0; /* Ensure no extra top margin */
 }
 
 .project__description {
