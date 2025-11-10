@@ -463,16 +463,27 @@ a:hover {
 }
 
 .about__content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-4xl);
   align-items: center;
 }
 
+.about__content > * {
+  flex: 1 1 400px;
+  min-width: 0;
+}
+
 .about__description {
-  font-size: var(--font-size-lg);
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--spacing-xl);
+  max-width: 100%;
+}
+
+.about__text {
+  width: 100%;
+  max-width: 100%;
 }
 
 .about__text > .about__description:first-child {

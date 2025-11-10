@@ -142,11 +142,11 @@
                         <div class="about__highlight">
                             <h3 class="about__highlight-title">Current Projects</h3>
                             <p class="about__description">
-                                BatGentic transforms ultrasonic bat calls into human-audible audio while providing professional 
-                                data processing capabilities for ecological research. This project demonstrates how scientific 
-                                workflows can be made accessible through intuitive visual interfaces, bridging the gap between 
-                                complex bioacoustic analysis and both research and creative applications. The platform exemplifies 
-                                how thoughtful interface design makes specialized knowledge democratically accessible.
+                                Colorista demonstrates intelligent task delegation in creative workflows by analyzing artwork 
+                                and recommending specific colored pencils using the Delta-E 2000 algorithm for perceptually 
+                                accurate color matching. Built in 2 weeks and deployed to production, this project exemplifies 
+                                how AI can augment artistic decision-making without replacing creative control, helping artists 
+                                work more efficiently while maintaining their unique vision and style.
                             </p>
                         </div>
                         
@@ -213,61 +213,35 @@
                 </div>
                 
                 <div class="projects__grid">
-                    <!-- Digital Art Projects -->
-                    <article class="project__card" data-category="digital-art">
+                    <!-- AI Tools -->
+                    <article class="project__card" data-category="ai-tools">
                         <div class="project__image">
-                            <img src="assets/images/project-1.jpg" alt="Interactive Torus Visualization" class="project__img">
+                            <img src="assets/images/colorista/colorista-hero.jpg" alt="Colorista - AI Color Matching for Artists" class="project__img">
                             <div class="project__overlay">
                                 <div class="project__links">
-                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
+                                    <a href="https://colorista-mvp.vercel.app" class="project__link" target="_blank" rel="noopener noreferrer">
                                         <span>Live Demo</span>
                                     </a>
                                     <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
-                                        <span>GitHub</span>
+                                        <span>Presentation</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="project__content">
-                            <h3 class="project__title">Interactive Torus</h3>
+                            <h3 class="project__title">Colorista - AI Color Matching for Artists</h3>
                             <p class="project__description">
-                                A mesmerizing 3D torus visualization with dynamic colors and interactive controls, 
-                                built with Processing and p5.js.
+                                Web application that analyzes artwork and recommends specific colored pencils using 
+                                the Delta-E 2000 algorithm for perceptually accurate color matching. Built in 2 weeks 
+                                and deployed to production, this tool helps artists make informed decisions about 
+                                their color palette choices with scientific precision.
                             </p>
                             <div class="project__tags">
-                                <span class="project__tag">Processing</span>
+                                <span class="project__tag">Next.js 15</span>
+                                <span class="project__tag">TypeScript</span>
+                                <span class="project__tag">Tailwind CSS</span>
                                 <span class="project__tag">p5.js</span>
-                                <span class="project__tag">3D Art</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article class="project__card" data-category="digital-art">
-                        <div class="project__image">
-                            <img src="assets/images/project-3.jpg" alt="ExcelPunx Portrait Generator" class="project__img">
-                            <div class="project__overlay">
-                                <div class="project__links">
-                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
-                                        <span>Live Demo</span>
-                                    </a>
-                                    <a href="#" class="project__link" target="_blank" rel="noopener noreferrer">
-                                        <span>GitHub</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="project__content">
-                            <h3 class="project__title">ExcelPunx</h3>
-                            <p class="project__description">
-                                Transform webcam portraits into Excel art using creative coding techniques 
-                                and computer vision algorithms.
-                            </p>
-                            <div class="project__tags">
-                                <span class="project__tag">JavaScript</span>
-                                <span class="project__tag">Computer Vision</span>
-                                <span class="project__tag">Digital Art</span>
                             </div>
                         </div>
                     </article>
@@ -338,13 +312,10 @@
                     
                     <article class="project__card" data-category="ai-tools">
                         <div class="project__image">
-                            <img src="assets/images/project-5.jpg" alt="BatGentic Bioacoustic Analysis" class="project__img">
+                            <img src="assets/images/somekindablue/somekindablue-hero.jpg" alt="DCGAN Album Cover Generator" class="project__img">
                             <div class="project__overlay">
                                 <div class="project__links">
-                                    <a href="https://qxaminer-batgentic.streamlit.app" class="project__link" target="_blank" rel="noopener noreferrer">
-                                        <span>Live Demo</span>
-                                    </a>
-                                    <a href="https://github.com/qxaminer/batgentic" class="project__link" target="_blank" rel="noopener noreferrer">
+                                    <a href="https://github.com/qxaminer/somekindablue_gan" class="project__link" target="_blank" rel="noopener noreferrer">
                                         <span>GitHub</span>
                                     </a>
                                 </div>
@@ -352,17 +323,18 @@
                         </div>
                         
                         <div class="project__content">
-                            <h3 class="project__title">BatGentic: Ecological Data as Creative Interface</h3>
+                            <h3 class="project__title">somekindablue_gan - DCGAN Album Cover Generator</h3>
                             <p class="project__description">
-                                Interactive bioacoustic analysis platform that transforms ultrasonic bat calls into human-audible 
-                                audio while providing professional data processing capabilities. Demonstrates how scientific 
-                                workflows can be made accessible through intuitive visual interfaces.
+                                Deep Convolutional Generative Adversarial Network for generating album cover artwork, 
+                                trained on 20,000 diverse album covers from multiple genres. Implements advanced DCGAN 
+                                stability techniques including label smoothing, noise injection, and separate learning rates 
+                                to produce diverse, colorful 128×128 RGB album cover designs.
                             </p>
                             <div class="project__tags">
                                 <span class="project__tag">Python</span>
-                                <span class="project__tag">Streamlit</span>
-                                <span class="project__tag">Bioacoustics</span>
-                                <span class="project__tag">Data Visualization</span>
+                                <span class="project__tag">PyTorch</span>
+                                <span class="project__tag">DCGAN</span>
+                                <span class="project__tag">Generative AI</span>
                             </div>
                         </div>
                     </article>
