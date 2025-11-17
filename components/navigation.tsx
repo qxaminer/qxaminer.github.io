@@ -7,9 +7,10 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { href: "/", label: "Home" },
+  { href: "/work", label: "Studio Work" },
   { href: "/projects", label: "Projects" },
-  { href: "/#artwork", label: "Artwork" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ]
 
 export function Navigation() {
@@ -19,7 +20,7 @@ export function Navigation() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="font-bold text-xl">Vero Fields</span>
+          <span className="font-serif text-xl font-bold">Mister Fields</span>
         </Link>
 
         <nav className="flex items-center gap-6">
