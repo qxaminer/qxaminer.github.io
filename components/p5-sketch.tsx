@@ -7,8 +7,12 @@ export function P5Sketch() {
   const sketchRef = useRef<any>(null)
 
   useEffect(() => {
+    let cancelled = false
+    
     // Dynamically import p5 only on client side
     import("p5").then((p5Module) => {
+      if (cancelled) return
+      
       const p5 = p5Module.default
 
       const sketch = (p: any) => {
@@ -18,7 +22,9 @@ export function P5Sketch() {
 
         p.setup = () => {
           const canvas = p.createCanvas(600, 450)
-          canvas.parent(containerRef.current!)
+          if (containerRef.current) {
+            canvas.parent(containerRef.current)
+          }
           p.colorMode(p.HSB, 360, 100, 100, 100)
         }
 
@@ -157,15 +163,17 @@ export function P5Sketch() {
       }
 
       // Create the p5 instance
-      if (containerRef.current) {
+      if (containerRef.current && !sketchRef.current) {
         sketchRef.current = new p5(sketch)
       }
     })
 
     // Cleanup function
     return () => {
+      cancelled = true
       if (sketchRef.current) {
         sketchRef.current.remove()
+        sketchRef.current = null
       }
     }
   }, [])

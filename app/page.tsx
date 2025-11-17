@@ -55,119 +55,115 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b bg-background">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
-        <div className="container relative">
-          <div className="mx-auto max-w-7xl py-20 md:py-28 lg:py-32">
-            <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-start md:text-left">
+        <div className="relative mx-auto max-w-7xl px-6 py-32 md:px-8 md:py-40 lg:px-12">
+          <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between">
               {/* Hero Content */}
-              <div className="flex-1 space-y-6">
-                <div className="flex flex-col items-center gap-6 md:flex-row md:items-center md:gap-8">
-                  <div className="space-y-3">
-                    <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                      Vero Fields
-                    </h1>
-                    <p className="text-xl text-muted-foreground sm:text-2xl md:text-3xl">
-                      Creative Technologist
-                    </p>
-                  </div>
-
-                  {/* Profile Photo - Centered between name and p5 sketch */}
-                  <Avatar className="h-32 w-32 border-4 border-border md:h-40 md:w-40">
-                    <AvatarImage src="/avatar.jpg" alt="Vero Fields" />
-                    <AvatarFallback className="text-3xl font-bold">VF</AvatarFallback>
-                  </Avatar>
+              <div className="flex-1 space-y-8 text-center lg:text-left">
+                <div className="space-y-4">
+                  <h1 className="font-serif text-6xl font-bold tracking-tight sm:text-7xl lg:text-8xl">
+                    Mister Fields
+                  </h1>
+                  <p className="text-2xl text-muted-foreground sm:text-3xl">
+                    Artist & Creative Technologist
+                  </p>
                 </div>
 
-                <Separator className="mx-auto w-24 md:mx-0" />
+                <Separator className="mx-auto w-24 lg:mx-0" />
 
-                <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:mx-0 md:text-xl">
-                  Building connection infrastructure—tools that help humans collaborate and flourish.
-                  Where others see AI as automation, I see translation: between languages, skill levels,
-                  and cultural values.
+                <p className="mx-auto max-w-2xl text-xl leading-relaxed text-foreground lg:mx-0">
+                  Mister Fields is a practicing artist and creative technologist whose work bridges studio practice with emerging technology. As a responsible innovator, they build tools that augment human agency while developing a philosophy of practice that keeps human creativity central to technological innovation.
                 </p>
 
-                <div className="flex flex-wrap justify-center gap-4 md:justify-start">
-                  <Button asChild size="lg" className="gap-2">
-                    <Link href="#projects">
-                      View My Work
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
+                {/* Dual Navigation */}
+                <div className="flex flex-col items-center gap-4 pt-8 sm:flex-row lg:justify-start">
+                  <Button asChild size="lg" className="w-full sm:w-auto">
+                    <Link href="/work">View Studio Work</Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="gap-2">
-                    <Link href="/about">About Me</Link>
+                  <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                    <Link href="/projects">View Technical Projects</Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="gap-2">
-                    <a href="mailto:overtgreen@gmail.com">
-                      <Mail className="h-4 w-4" />
-                      Contact
+                  <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+                      Download CV
                     </a>
                   </Button>
                 </div>
               </div>
 
-              {/* Right Column: p5.js Sketch */}
-              <div className="flex flex-shrink-0 items-center md:items-start">
-                <div className="w-full max-w-[600px]">
-                  <P5Sketch />
-                </div>
+              {/* P5.js Sketch */}
+              <div className="flex w-full max-w-[500px] flex-shrink-0 items-center justify-center lg:w-auto">
+                <P5Sketch />
               </div>
             </div>
           </div>
-        </div>
       </section>
 
-      {/* About Preview Section */}
+      {/* Quick Links Section */}
       <section className="border-b py-20 md:py-24">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            <Card className="border-2">
-              <CardHeader className="space-y-4 p-8">
-                <div>
-                  <CardTitle className="text-3xl font-bold tracking-tight">
-                    About Me
-                  </CardTitle>
-                  <CardDescription className="mt-2 text-lg">
-                    Responsible Innovator | Masters in Creative Technology @ SMU
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+          <div className="grid gap-8 md:grid-cols-3">
+              <Card className="group transition-all hover:shadow-lg">
+                <CardHeader className="space-y-2 text-center">
+                  <CardTitle className="text-xl">Studio Practice</CardTitle>
+                  <CardDescription>
+                    Paintings and gallery works exploring perception and technology
                   </CardDescription>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6 px-8 pb-8">
-                <div className="space-y-4">
-                  <p className="text-lg leading-relaxed text-foreground">
-                    Mister Fields is a responsible innovator building connection infrastructure—tools that help humans collaborate and flourish. Recent work includes Colorista (deployed color-matching for artists), Itenerator (AI-powered travel assistant), and qScribe (adaptive learning through edge AI).
-                  </p>
-                  <p className="text-base leading-relaxed text-muted-foreground">
-                    Where others see AI as automation, they see translation: between languages, skill levels, and cultural values. Currently pursuing a Masters in Creative Technology at SMU, their work centers on implementing AI ethics in design—respecting agency, preserving cultural uniqueness, and ensuring human value alignment through constitutional principles.
-                  </p>
-                  <p className="text-base leading-relaxed text-muted-foreground">
-                    Recent research explores multi-modal edge LLMs that personalize learning by mapping human desires, behaviors, and passions to outcomes—adapting to individual needs without extracting data. They practice rapid iteration and direct communication, shipping working prototypes in weeks that embody their values: tools that amplify human agency, not automate it away.
-                  </p>
-                </div>
-
-                <div className="flex justify-center pt-4 md:justify-start">
-                  <Button asChild variant="outline">
-                    <Link href="/about">
-                      Learn More About Me
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                </CardHeader>
+                <CardContent className="flex justify-center">
+                  <Button asChild variant="link" className="h-auto p-0">
+                    <Link href="/work">
+                      View Gallery →
                     </Link>
                   </Button>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+
+              <Card className="group transition-all hover:shadow-lg">
+                <CardHeader className="space-y-2 text-center">
+                  <CardTitle className="text-xl">Technical Work</CardTitle>
+                  <CardDescription>
+                    Deployed applications, research prototypes, and creative tools
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex justify-center">
+                  <Button asChild variant="link" className="h-auto p-0">
+                    <Link href="/projects">
+                      View Projects →
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="group transition-all hover:shadow-lg">
+                <CardHeader className="space-y-2 text-center">
+                  <CardTitle className="text-xl">About</CardTitle>
+                  <CardDescription>
+                    Philosophy of practice, background in NLP research, and current work at SMU
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex justify-center">
+                  <Button asChild variant="link" className="h-auto p-0">
+                    <Link href="/about">
+                      Learn More →
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
-        </div>
       </section>
 
-      {/* Featured Projects Section */}
-      <section id="projects" className="py-20 md:py-24">
-        <div className="container">
-          <div className="mx-auto max-w-6xl space-y-12">
+      {/* Featured Work Section */}
+      <section id="work" className="py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+          <div className="space-y-12">
             {/* Section Header */}
             <div className="space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                Featured Projects
+              <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+                Selected Work
               </h2>
               <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-                Exploring the intersection of AI, creativity, and human-computer interaction
+                Technical projects bridging AI, creativity, and human agency
               </p>
             </div>
 
@@ -236,199 +232,13 @@ export default function Home() {
             </div>
 
             {/* View All Projects CTA */}
-            <div className="flex justify-center pt-8">
+            <div className="flex justify-center pt-12">
               <Button asChild variant="outline" size="lg">
                 <Link href="/projects">
                   View All Projects
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Artwork Section */}
-      <section id="artwork" className="border-b py-20 md:py-24">
-        <div className="container">
-          <div className="mx-auto max-w-6xl space-y-12">
-            {/* Section Header */}
-            <div className="space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                Artwork
-              </h2>
-              <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-                Exploring multiple mediums and creative expressions
-              </p>
-            </div>
-
-            {/* Artwork Grid */}
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {/* Digital */}
-              <Card className="group overflow-hidden transition-all hover:shadow-lg">
-                <div className="aspect-square bg-gradient-to-br from-blue-500/10 to-purple-500/10" />
-                <CardHeader className="space-y-2 p-4">
-                  <CardTitle className="text-lg">Digital</CardTitle>
-                  <CardDescription className="text-sm">
-                    Digital art and creative coding projects
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              {/* Paper */}
-              <Card className="group overflow-hidden transition-all hover:shadow-lg">
-                <div className="aspect-square bg-gradient-to-br from-amber-500/10 to-orange-500/10" />
-                <CardHeader className="space-y-2 p-4">
-                  <CardTitle className="text-lg">Paper</CardTitle>
-                  <CardDescription className="text-sm">
-                    Drawings, sketches, and paper-based works
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              {/* Paint */}
-              <Card className="group overflow-hidden transition-all hover:shadow-lg">
-                <div className="aspect-square bg-gradient-to-br from-red-500/10 to-pink-500/10" />
-                <CardHeader className="space-y-2 p-4">
-                  <CardTitle className="text-lg">Paint</CardTitle>
-                  <CardDescription className="text-sm">
-                    Paintings and mixed media artworks
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              {/* Writings */}
-              <Card className="group overflow-hidden transition-all hover:shadow-lg">
-                <div className="aspect-square bg-gradient-to-br from-slate-500/10 to-zinc-500/10" />
-                <CardHeader className="space-y-2 p-4">
-                  <CardTitle className="text-lg">Writings</CardTitle>
-                  <CardDescription className="text-sm">
-                    Essays, poetry, and creative writing
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              {/* Photography */}
-              <Card className="group overflow-hidden transition-all hover:shadow-lg">
-                <div className="aspect-square bg-gradient-to-br from-cyan-500/10 to-teal-500/10" />
-                <CardHeader className="space-y-2 p-4">
-                  <CardTitle className="text-lg">Photography</CardTitle>
-                  <CardDescription className="text-sm">
-                    Photographic works and visual storytelling
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              {/* Photogrammetry */}
-              <Card className="group overflow-hidden transition-all hover:shadow-lg">
-                <div className="aspect-square bg-gradient-to-br from-emerald-500/10 to-green-500/10" />
-                <CardHeader className="space-y-2 p-4">
-                  <CardTitle className="text-lg">Photogrammetry</CardTitle>
-                  <CardDescription className="text-sm">
-                    3D scanning and spatial capture projects
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              {/* Aural */}
-              <Card className="group overflow-hidden transition-all hover:shadow-lg">
-                <div className="aspect-square bg-gradient-to-br from-violet-500/10 to-indigo-500/10" />
-                <CardHeader className="space-y-2 p-4">
-                  <CardTitle className="text-lg">Aural</CardTitle>
-                  <CardDescription className="text-sm">
-                    Sound art, music, and audio experiences
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              {/* Multimedia */}
-              <Card className="group overflow-hidden transition-all hover:shadow-lg">
-                <div className="aspect-square bg-gradient-to-br from-rose-500/10 to-fuchsia-500/10" />
-                <CardHeader className="space-y-2 p-4">
-                  <CardTitle className="text-lg">Multimedia</CardTitle>
-                  <CardDescription className="text-sm">
-                    Cross-medium installations and experiments
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* GANs Section */}
-      <section className="border-b py-20 md:py-24">
-        <div className="container">
-          <div className="mx-auto max-w-6xl space-y-12">
-            {/* Section Header */}
-            <div className="space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                GANs
-              </h2>
-              <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-                Generative Adversarial Networks for creative exploration
-              </p>
-            </div>
-
-            {/* GAN Projects Grid */}
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {/* somekindablue_gan */}
-              <Card className="group flex flex-col transition-all hover:shadow-lg">
-                <div className="aspect-video bg-gradient-to-br from-blue-500/10 to-purple-500/10" />
-                <CardHeader className="space-y-3 p-6">
-                  <div className="space-y-1.5">
-                    <CardTitle className="text-2xl font-bold transition-colors group-hover:text-primary">
-                      <a
-                        href="https://github.com/qxaminer/somekindablue_gan"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        somekindablue_gan
-                      </a>
-                    </CardTitle>
-                    <p className="text-sm font-medium text-muted-foreground">
-                      Album Cover Generator
-                    </p>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="flex-1 space-y-4 px-6">
-                  <CardDescription className="text-base leading-relaxed">
-                    Deep Convolutional GAN for generating album cover artwork, trained on 20,000
-                    diverse album covers with advanced DCGAN stability techniques including label
-                    smoothing, noise injection, and separate learning rates to produce diverse,
-                    colorful 128×128 RGB album cover designs.
-                  </CardDescription>
-
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary" className="px-2.5 py-0.5">
-                      Python
-                    </Badge>
-                    <Badge variant="secondary" className="px-2.5 py-0.5">
-                      PyTorch
-                    </Badge>
-                    <Badge variant="secondary" className="px-2.5 py-0.5">
-                      DCGAN
-                    </Badge>
-                    <Badge variant="secondary" className="px-2.5 py-0.5">
-                      Computer Vision
-                    </Badge>
-                  </div>
-                </CardContent>
-
-                <CardFooter className="flex gap-3 p-6 pt-0">
-                  <Button asChild variant="outline" size="sm" className="flex-1">
-                    <a
-                      href="https://github.com/qxaminer/somekindablue_gan"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="mr-2 h-4 w-4" />
-                      GitHub
-                    </a>
-                  </Button>
-                </CardFooter>
-              </Card>
             </div>
           </div>
         </div>
