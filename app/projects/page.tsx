@@ -7,6 +7,17 @@ import { Separator } from "@/components/ui/separator"
 
 const projects = [
   {
+    title: "nik³",
+    subtitle: "Language Acquisition Engine",
+    description: "A local-first desktop application for systematic vocabulary acquisition through contextual reading. Built on a 97,000-entry lexical database with real-time NLP tokenization, spaced-repetition tracking, and an embedded collection of 21,000+ curated articles.",
+    tags: ["Rust", "Tauri", "SQLite", "Python", "NLP", "TypeScript"],
+    liveUrl: "https://nik3.xanthos.dev",
+    githubUrl: "https://github.com/qxaminer/nik3",
+    category: "Research",
+    slug: "nik3",
+    accentColor: "#c9a84c",
+  },
+  {
     title: "Colorista",
     subtitle: "AI-Powered Color Matching for Artists",
     description: "Built to solve the creator's own analysis paralysis with color selection—demonstrating tools born from real creative need. Analyzes artwork and recommends specific colored pencils using the Delta-E 2000 algorithm for perceptually accurate color matching. Deployed to production in 2 weeks.",
@@ -78,7 +89,11 @@ export default function ProjectsPage() {
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="grid gap-8 md:grid-cols-2">
               {projects.map((project) => (
-                <Card key={project.slug} className="group flex flex-col transition-all hover:shadow-lg">
+                <Card
+                  key={project.slug}
+                  className="group flex flex-col transition-all hover:shadow-lg"
+                  style={project.accentColor ? { borderLeft: `4px solid ${project.accentColor}` } : undefined}
+                >
                   <CardHeader className="space-y-3 p-8">
                     <div className="space-y-2">
                       <div className="flex items-start justify-between gap-4">

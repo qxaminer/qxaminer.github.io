@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Mail, Github, Linkedin } from "lucide-react"
+import Link from "next/link"
 
 export default function ContactPage() {
   return (
@@ -119,10 +120,16 @@ export default function ContactPage() {
       {/* Response Time Note */}
       <section className="border-t py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="mx-auto max-w-2xl text-center space-y-4">
             <p className="text-sm text-muted-foreground">
-              I aim to respond to all inquiries within 2-3 business days. 
+              I aim to respond to all inquiries within 2-3 business days.
               For urgent matters, please indicate this in your subject line.
+            </p>
+            <p style={{ fontSize: "12px" }} className="text-muted-foreground/50">
+              Verified recruiters:{" "}
+              <Link href="/intel" className="underline-offset-2 hover:underline">
+                restricted research →
+              </Link>
             </p>
           </div>
         </div>
