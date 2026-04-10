@@ -115,8 +115,10 @@ export default function IntelPage() {
       </div>
 
       <div
-        className={`min-h-screen bg-zinc-950 px-6 py-16 text-zinc-200 transition-opacity duration-500 ease-out ${
-          unlocked ? "opacity-100" : "pointer-events-none opacity-0"
+        className={`bg-zinc-950 px-6 py-16 text-zinc-200 transition-opacity duration-500 ease-out ${
+          unlocked
+            ? "relative min-h-screen opacity-100"
+            : "pointer-events-none fixed inset-0 z-[55] overflow-hidden opacity-0"
         }`}
       >
         <div className="mx-auto max-w-3xl space-y-10">
