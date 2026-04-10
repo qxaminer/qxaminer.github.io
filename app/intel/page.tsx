@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 
-const CORRECT_HASH = "064e51160bc6144a10b2a1126894b36586c57bc8173dd5fbc83db4fac73a5f3e"
+const CORRECT_HASH = "e3c652f0ba0b4801205814f8b6bc49672c4c74e25b497770bb89b22cdeb4e951"
 
 async function sha256(text: string): Promise<string> {
   const encoded = new TextEncoder().encode(text)
