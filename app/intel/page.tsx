@@ -3,11 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 
-// REPLACE BEFORE DEPLOY
-// To generate the hash for your real password, run:
-//   echo -n "yourpassword" | shasum -a 256 | awk '{print $1}'
-// Then replace the string below with the output.
-const CORRECT_HASH = "1bdaae429e33bf50acf100f7b1c893851ac769d86f0a4e0d904adb043bfb9051"
+const CORRECT_HASH = "064e51160bc6144a10b2a1126894b36586c57bc8173dd5fbc83db4fac73a5f3e"
 
 async function sha256(text: string): Promise<string> {
   const encoded = new TextEncoder().encode(text)
