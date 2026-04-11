@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 
-const CORRECT_HASH = "e3c652f0ba0b4801205814f8b6bc49672c4c74e25b497770bb89b22cdeb4e951"
+const CORRECT_HASH = "e172e13bd5ddb503adebe1a0c5862cd86a4625d19598698d2a3f4aa3c3bbff93"
 
 async function sha256(text: string): Promise<string> {
   const encoded = new TextEncoder().encode(text)
@@ -23,7 +23,7 @@ export default function IntelPage() {
   const shakeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    if (sessionStorage.getItem("intel_unlocked") === "1") {
+    if (sessionStorage.getItem("intel_auth") === "1") {
       setUnlocked(true)
     } else {
       queueMicrotask(() => inputRef.current?.focus())
@@ -46,7 +46,7 @@ export default function IntelPage() {
       if (shakeTimeoutRef.current) clearTimeout(shakeTimeoutRef.current)
       setRejectVisual(false)
       setShaking(false)
-      sessionStorage.setItem("intel_unlocked", "1")
+      sessionStorage.setItem("intel_auth", "1")
       setUnlocked(true)
     } else {
       if (rejectTimeoutRef.current) clearTimeout(rejectTimeoutRef.current)
