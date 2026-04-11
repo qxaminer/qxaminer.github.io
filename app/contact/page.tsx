@@ -1,8 +1,143 @@
+"use client"
+
+import { useState } from "react"
+import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Mail, Github, Linkedin } from "lucide-react"
-import Link from "next/link"
+
+const FORMSPREE_ACTION = "https://formspree.io/f/meepyoev"
+
+const fieldClass =
+  "w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm text-foreground shadow-sm ring-offset-background transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+
+const labelClass = "mb-2 block text-sm font-medium text-foreground"
+
+function ContactForm() {
+  const [sent, setSent] = useState(false)
+  const [error, setError] = useState(false)
+  const [pending, setPending] = useState(false)
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setError(false)
+    setPending(true)
+    const form = e.currentTarget
+    const fd = new FormData(form)
+    try {
+      const res = await fetch(FORMSPREE_ACTION, {
+        method: "POST",
+        body: fd,
+        headers: { Accept: "application/json" },
+      })
+      if (res.ok) {
+        setSent(true)
+        form.reset()
+      } else {
+        setError(true)
+      }
+    } catch {
+      setError(true)
+    } finally {
+      setPending(false)
+    }
+  }
+
+  if (sent) {
+    return (
+      <div className="rounded-lg border border-border bg-card/50 px-8 py-14 text-center shadow-sm">
+        <p className="text-lg text-foreground">Message sent — I&apos;ll be in touch soon.</p>
+      </div>
+    )
+  }
+
+  return (
+    <form
+      action={FORMSPREE_ACTION}
+      method="POST"
+      onSubmit={handleSubmit}
+      className="space-y-8 text-left"
+    >
+      <input type="hidden" name="_subject" value="xanthos.dev inquiry" />
+
+      <div>
+        <label htmlFor="contact-name" className={labelClass}>
+          Name <span className="text-destructive">*</span>
+        </label>
+        <input id="contact-name" name="name" type="text" required autoComplete="name" className={fieldClass} />
+      </div>
+
+      <div>
+        <label htmlFor="contact-email" className={labelClass}>
+          Email <span className="text-destructive">*</span>
+        </label>
+        <input
+          id="contact-email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          className={fieldClass}
+        />
+      </div>
+
+      <fieldset className="space-y-3">
+        <legend className="mb-3 block text-sm font-medium text-foreground">
+          Inquiry type <span className="text-destructive">*</span>
+        </legend>
+        <div className="space-y-3">
+          <label className="flex cursor-pointer items-start gap-3 rounded-md border border-transparent px-1 py-1.5 transition-colors hover:border-border hover:bg-muted/30">
+            <input
+              type="radio"
+              name="inquiry_type"
+              value="Studio Work & Commissions"
+              required
+              className="mt-1 h-4 w-4 border-input text-primary focus:ring-ring"
+            />
+            <span className="text-sm leading-snug text-foreground">Studio Work &amp; Commissions</span>
+          </label>
+          <label className="flex cursor-pointer items-start gap-3 rounded-md border border-transparent px-1 py-1.5 transition-colors hover:border-border hover:bg-muted/30">
+            <input
+              type="radio"
+              name="inquiry_type"
+              value="Technical Collaboration"
+              className="mt-1 h-4 w-4 border-input text-primary focus:ring-ring"
+            />
+            <span className="text-sm leading-snug text-foreground">Technical Collaboration</span>
+          </label>
+          <label className="flex cursor-pointer items-start gap-3 rounded-md border border-transparent px-1 py-1.5 transition-colors hover:border-border hover:bg-muted/30">
+            <input type="radio" name="inquiry_type" value="Other" className="mt-1 h-4 w-4 border-input text-primary focus:ring-ring" />
+            <span className="text-sm leading-snug text-foreground">Other</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div>
+        <label htmlFor="contact-message" className={labelClass}>
+          Message <span className="text-destructive">*</span>
+        </label>
+        <textarea
+          id="contact-message"
+          name="message"
+          required
+          rows={6}
+          className={fieldClass + " min-h-[140px] resize-y"}
+        />
+      </div>
+
+      {error && (
+        <p className="text-sm text-destructive" role="alert">
+          Something went wrong. Please try again.
+        </p>
+      )}
+
+      <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={pending}>
+        {pending ? "Sending…" : "Send Message"}
+      </Button>
+    </form>
+  )
+}
 
 export default function ContactPage() {
   return (
@@ -22,76 +157,35 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Options */}
+      {/* Contact form */}
       <section className="py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-          <div className="mx-auto max-w-4xl space-y-12">
-            {/* Primary Contact */}
-            <Card className="border-2">
-              <CardHeader className="space-y-4 p-8 text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+          <div className="mx-auto max-w-xl space-y-12">
+            <Card className="border-2 border-border bg-card/40 shadow-sm">
+              <CardHeader className="space-y-4 p-8 text-center sm:text-left">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 sm:mx-0">
                   <Mail className="h-8 w-8 text-primary" />
                 </div>
                 <CardTitle className="text-2xl">Get in Touch</CardTitle>
-                <CardDescription className="text-lg">
-                  The best way to reach out is via email
+                <CardDescription className="text-base text-muted-foreground">
+                  Contact via form below
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6 px-8 pb-8">
-                <div className="text-center">
-                  <Button asChild size="lg" className="gap-2">
-                    <a href="mailto:overtgreen@gmail.com">
-                      <Mail className="h-4 w-4" />
-                      overtgreen@gmail.com
-                    </a>
-                  </Button>
-                </div>
+              <CardContent className="px-8 pb-8 pt-0">
+                <ContactForm />
               </CardContent>
             </Card>
-
-            {/* Additional Info */}
-            <div className="mx-auto grid max-w-3xl gap-8 md:grid-cols-2">
-              <Card>
-                <CardHeader className="text-center">
-                  <CardTitle className="text-xl">Studio Work & Commissions</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 text-center text-muted-foreground">
-                  <p>
-                    Interested in discussing artwork purchases, commissions, or studio visits? 
-                    Please reach out with details about your project or inquiry.
-                  </p>
-                  <p className="text-sm">
-                    Available for select commission work and gallery collaborations.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="text-center">
-                  <CardTitle className="text-xl">Technical Collaboration</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 text-center text-muted-foreground">
-                  <p>
-                    Open to collaborations on AI ethics, creative technology, edge computing, 
-                    and human-centered design projects.
-                  </p>
-                  <p className="text-sm">
-                    Currently available for research partnerships and consulting opportunities.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
 
             {/* Connect Section */}
             <div className="space-y-6 text-center">
               <Separator />
               <div className="space-y-4">
                 <h2 className="text-xl font-semibold">Connect Elsewhere</h2>
-                <div className="flex justify-center gap-4">
+                <div className="flex flex-wrap justify-center gap-4">
                   <Button asChild variant="outline" size="lg">
-                    <a 
-                      href="https://github.com/qxaminer" 
-                      target="_blank" 
+                    <a
+                      href="https://github.com/qxaminer"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="gap-2"
                     >
@@ -100,9 +194,9 @@ export default function ContactPage() {
                     </a>
                   </Button>
                   <Button asChild variant="outline" size="lg">
-                    <a 
-                      href="https://www.linkedin.com/in/patrickbarfield/" 
-                      target="_blank" 
+                    <a
+                      href="https://www.linkedin.com/in/patrickbarfield/"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="gap-2"
                     >
@@ -120,12 +214,12 @@ export default function ContactPage() {
       {/* Response Time Note */}
       <section className="border-t py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-          <div className="mx-auto max-w-2xl text-center space-y-4">
+          <div className="mx-auto max-w-2xl space-y-4 text-center">
             <p className="text-sm text-muted-foreground">
-              I aim to respond to all inquiries within 2-3 business days.
-              For urgent matters, please indicate this in your subject line.
+              I aim to respond to all inquiries within 2–3 business days. For urgent matters, please say so in your
+              message.
             </p>
-            <p style={{ fontSize: "12px" }} className="text-muted-foreground/50">
+            <p className="text-xs text-muted-foreground/70">
               Verified recruiters:{" "}
               <Link href="/intel" className="underline-offset-2 hover:underline">
                 restricted research →
@@ -137,4 +231,3 @@ export default function ContactPage() {
     </div>
   )
 }
-
