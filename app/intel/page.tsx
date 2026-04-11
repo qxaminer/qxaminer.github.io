@@ -131,8 +131,8 @@ export default function IntelPage() {
               href="https://nik3.xanthos.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="mx-auto mt-6 block max-w-[200px] border-2 bg-zinc-950 px-5 py-3 text-center font-mono text-sm font-medium text-zinc-100 transition-colors hover:bg-zinc-900"
-              style={{ borderColor: "#c9a84c" }}
+              className="max-w-[200px] border-2 bg-zinc-950 px-5 py-3 text-center font-mono text-sm font-medium text-zinc-100 transition-colors hover:bg-zinc-900"
+              style={{ display: "block", margin: "24px auto 0", borderColor: "#c9a84c" }}
             >
               Launch Live Demo →
             </a>
