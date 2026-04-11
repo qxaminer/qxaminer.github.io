@@ -11,7 +11,6 @@ const projects = [
     subtitle: "Language Acquisition Engine",
     description: "A local-first desktop application for systematic vocabulary acquisition through contextual reading. Built on a 97,000-entry lexical database with real-time NLP tokenization, spaced-repetition tracking, and an embedded collection of 21,000+ curated articles.",
     tags: ["Rust", "Tauri", "SQLite", "Python", "NLP", "TypeScript"],
-    demoOnRequest: true,
     githubUrl: "https://github.com/qxaminer/nik3",
     category: "Research",
     slug: "nik3",
@@ -136,16 +135,23 @@ export default function ProjectsPage() {
                         </Link>
                       </Button>
                     )}
-                    {project.demoOnRequest && (
-                      <span
-                        aria-disabled="true"
-                        className="flex flex-1 cursor-default select-none items-center justify-center rounded-md border border-input bg-muted/40 px-3 py-2 text-sm font-medium text-muted-foreground"
-                      >
-                        Demo on Request
-                      </span>
+                    {project.slug === "nik3" && (
+                      <Button asChild size="sm" className="flex-1">
+                        <a href="https://xanthos.dev/intel">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Demo on Request →
+                        </a>
+                      </Button>
                     )}
                     {project.githubUrl && (
-                      <Button asChild variant="outline" size="sm" className={project.liveUrl || project.demoOnRequest ? "" : "flex-1"}>
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className={
+                          project.slug === "nik3" ? "flex-1" : project.liveUrl ? "" : "flex-1"
+                        }
+                      >
                         <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                           <Github className="mr-2 h-4 w-4" />
                           GitHub

@@ -126,6 +126,16 @@ export default function IntelPage() {
             ← Public Portfolio
           </Link>
 
+          <a
+            href="https://nik3.xanthos.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-full items-center justify-center rounded-md border-2 bg-zinc-950 px-5 py-3 font-mono text-sm font-medium text-zinc-100 transition-colors hover:bg-zinc-900 sm:w-auto"
+            style={{ borderColor: "#c9a84c" }}
+          >
+            Launch Live Demo →
+          </a>
+
           {/* Header */}
           <div className="space-y-2 border-b border-zinc-800 pb-8">
             <h1 className="font-mono text-2xl font-bold tracking-tight text-zinc-100">
