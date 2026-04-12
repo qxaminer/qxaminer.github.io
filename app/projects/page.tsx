@@ -15,6 +15,8 @@ const projects = [
     category: "Research",
     slug: "nik3",
     accentColor: "#c9a84c",
+    /** Gate on this site first; after password, /intel shows briefing + demo links. */
+    portfolioEntryHref: "/intel" as const,
   },
   {
     title: "Colorista",
@@ -64,6 +66,23 @@ const projects = [
   },
 ]
 
+function projectTitleHref(project: (typeof projects)[number]): string {
+  return (
+    project.portfolioEntryHref ??
+    project.liveUrl ??
+    project.githubUrl ??
+    `/projects/${project.slug}`
+  )
+}
+
+/** Open GitHub/live in a new tab; same-site gates (e.g. /intel) stay in-tab. */
+function projectTitleOpensNewTab(project: (typeof projects)[number]): boolean {
+  return (
+    project.portfolioEntryHref == null &&
+    !!(project.liveUrl || project.githubUrl)
+  )
+}
+
 export default function ProjectsPage() {
   return (
     <div className="flex flex-col">
@@ -97,13 +116,17 @@ export default function ProjectsPage() {
                     <div className="space-y-2">
                       <div className="flex items-start justify-between gap-4">
                         <CardTitle className="text-2xl font-bold transition-colors group-hover:text-primary">
-                          <Link
-                            href={project.liveUrl || project.githubUrl || `/projects/${project.slug}`}
-                            target={project.liveUrl || project.githubUrl ? "_blank" : undefined}
-                            rel={project.liveUrl || project.githubUrl ? "noopener noreferrer" : undefined}
-                          >
-                            {project.title}
-                          </Link>
+                          {projectTitleOpensNewTab(project) ? (
+                            <a
+                              href={projectTitleHref(project)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {project.title}
+                            </a>
+                          ) : (
+                            <Link href={projectTitleHref(project)}>{project.title}</Link>
+                          )}
                         </CardTitle>
                         <Badge variant="outline" className="shrink-0">{project.category}</Badge>
                       </div>
@@ -137,10 +160,10 @@ export default function ProjectsPage() {
                     )}
                     {project.slug === "nik3" && (
                       <Button asChild size="sm" className="flex-1">
-                        <a href="https://xanthos.dev/intel">
+                        <Link href="/intel">
                           <ExternalLink className="mr-2 h-4 w-4" />
                           Demo on Request →
-                        </a>
+                        </Link>
                       </Button>
                     )}
                     {project.githubUrl && (
