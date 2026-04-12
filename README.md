@@ -17,7 +17,7 @@ Dual-identity portfolio for a practicing artist and creative technologist. This 
 - 🧩 shadcn/ui component library
 - 🌗 Dark mode support with refined monochromatic palette
 - 📱 Fully responsive design
-- 🚀 Optimized for static export (GitHub Pages)
+- 🚀 Optimized for static export (Cloudflare Pages)
 - ♿ Accessible components
 - 🖼️ Gallery-quality aesthetics
 
@@ -38,15 +38,13 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 npm run build
 ```
 
-This will create a static export in the `out/` directory optimized for GitHub Pages.
+## Deploy
 
-### Deploy to GitHub Pages
+This site deploys automatically to Cloudflare Pages on every push to main.
 
-```bash
-npm run deploy
-```
+Live URL: https://xanthos.dev
 
-This will build and deploy to the `gh-pages` branch.
+No manual deploy step needed. Just push to main.
 
 ## Project Structure
 
