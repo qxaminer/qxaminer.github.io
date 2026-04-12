@@ -82,10 +82,16 @@ export default function Home() {
                   <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                     <Link href="/projects">View Technical Projects</Link>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
-                      Download CV
-                    </a>
+                  <Button
+                    type="button"
+                    size="lg"
+                    variant="outline"
+                    className="w-full cursor-not-allowed border-muted-foreground/30 bg-muted/30 text-muted-foreground opacity-60 sm:w-auto"
+                    disabled
+                    aria-disabled="true"
+                    title="CV temporarily unavailable"
+                  >
+                    Download CV
                   </Button>
                 </div>
               </div>
