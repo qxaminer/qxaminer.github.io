@@ -1,6 +1,11 @@
+"use client"
+
+import { useRouter } from "next/navigation"
+import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { WindwardSketch } from "@/components/windward-sketch"
 
 const artworks = [
   {
@@ -13,22 +18,26 @@ const artworks = [
     featured: true,
   },
   {
-    title: "Untitled (Digital Series)",
-    year: "2023-2024",
+    title: "Windward",
+    year: "2025",
     medium: "Digital",
     status: "Available",
     description: "Digital art and creative coding explorations using p5.js and Processing.",
     dimensions: null,
     featured: false,
+    renderSketch: true,
+    href: "/work/digital",
   },
   {
     title: "Paper Works",
-    year: "2022-2024",
+    year: "2020-present",
     medium: "Mixed media on paper",
     status: "Available",
     description: "Drawings, sketches, and paper-based explorations of form and color.",
     dimensions: null,
     featured: false,
+    image: "/artwork/dangerBarton.png",
+    href: "/work/paper-works",
   },
   {
     title: "Photogrammetry Studies",
@@ -42,6 +51,7 @@ const artworks = [
 ]
 
 export default function WorkPage() {
+  const router = useRouter()
   return (
     <div className="flex flex-col">
       {/* Header */}
@@ -134,41 +144,63 @@ export default function WorkPage() {
               {artworks
                 .filter((work) => !work.featured)
                 .map((work) => (
-                  <Card 
-                    key={work.title} 
-                    className="group overflow-hidden transition-all hover:shadow-lg"
+                  <div
+                    key={work.title}
+                    className={`overflow-hidden rounded-lg ${
+                      (work as any).href ? "cursor-pointer" : ""
+                    }`}
+                    onClick={() => {
+                      if ((work as any).href) {
+                        router.push((work as any).href)
+                      }
+                    }}
                   >
-                    {/* Image Placeholder */}
-                    <div className="aspect-square bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900">
-                      <div className="flex h-full items-center justify-center p-6">
-                        <span className="text-center text-sm text-muted-foreground">
-                          Image forthcoming
-                        </span>
-                      </div>
-                    </div>
-
-                    <CardHeader className="space-y-3 p-8">
-                      <div className="space-y-2">
-                        <CardTitle className="font-serif text-2xl">
-                          {work.title}
-                        </CardTitle>
-                        <div className="flex flex-wrap gap-2">
-                          <Badge variant="secondary" className="text-xs">
-                            {work.year}
-                          </Badge>
-                          <Badge variant="outline" className="text-xs">
-                            {work.status}
-                          </Badge>
+                    <Card className="group overflow-hidden transition-all hover:shadow-lg h-full">
+                      {/* Sketch or Image Placeholder */}
+                      {(work as any).renderSketch ? (
+                        <WindwardSketch />
+                      ) : (work as any).image ? (
+                        <div className="aspect-square overflow-hidden bg-gray-200 relative">
+                          <Image
+                            src={(work as any).image}
+                            alt={work.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform"
+                          />
                         </div>
-                      </div>
-                      <CardDescription className="text-base leading-relaxed">
-                        <span className="text-sm font-medium text-foreground">{work.medium}</span>
-                        <br />
-                        <br />
-                        {work.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
+                      ) : (
+                        <div className="aspect-square bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900">
+                          <div className="flex h-full items-center justify-center p-6">
+                            <span className="text-center text-sm text-muted-foreground">
+                              Image forthcoming
+                            </span>
+                          </div>
+                        </div>
+                      )}
+
+                      <CardHeader className="space-y-3 p-8">
+                        <div className="space-y-2">
+                          <CardTitle className="font-serif text-2xl">
+                            {work.title}
+                          </CardTitle>
+                          <div className="flex flex-wrap gap-2">
+                            <Badge variant="secondary" className="text-xs">
+                              {work.year}
+                            </Badge>
+                            <Badge variant="outline" className="text-xs">
+                              {work.status}
+                            </Badge>
+                          </div>
+                        </div>
+                        <CardDescription className="text-base leading-relaxed">
+                          <span className="text-sm font-medium text-foreground">{work.medium}</span>
+                          <br />
+                          <br />
+                          {work.description}
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </div>
                 ))}
             </div>
           </div>
