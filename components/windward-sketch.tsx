@@ -16,23 +16,7 @@ export function WindwardSketch() {
       const p5 = p5Module.default
 
       const sketch = (p: any) => {
-        // Web Audio API for audio reactivity
-        let audioContext: AudioContext | null = null
-        let analyser: AnalyserNode | null = null
-        let microphone: MediaStreamAudioSourceNode | null = null
-        let dataArray: Uint8Array | null = null
-        let bufferLength = 32
-
         // Tunable parameters
-        let ampSensitivity = 2.0
-        let bassSensitivity = 1.5
-        let smoothing = 0.15
-        let ampFloor = 0.02
-
-        // Smoothed values
-        let smoothAmp = 0
-        let smoothBass = 0
-
         let numParticles = 2000 // Reduced from 5000 for better performance
         let particles: any[] = []
         let symmetry = 5
@@ -41,7 +25,6 @@ export function WindwardSketch() {
         let sands: any[] = []
         let hgH = 220
         let hgW = 90
-        let audioInitialized = false
 
         // Particle class
         class Particle {
@@ -122,27 +105,6 @@ export function WindwardSketch() {
           p.colorMode(p.HSB, 360, 100, 100, 100)
           p.background(0)
 
-          // Initialize Web Audio API
-          if (!audioContext) {
-            audioContext = new (window as any).AudioContext()
-            analyser = audioContext.createAnalyser()
-            analyser.fftSize = 256
-            bufferLength = analyser.frequencyBinCount
-            dataArray = new Uint8Array(bufferLength)
-
-            navigator.mediaDevices
-              .getUserMedia({ audio: true })
-              .then((stream) => {
-                microphone = audioContext!.createMediaStreamSource(stream)
-                microphone.connect(analyser!)
-                audioInitialized = true
-              })
-              .catch((e) => {
-                console.log("Microphone access denied, running in silent mode")
-                audioInitialized = false
-              })
-          }
-
           for (let i = 0; i < numParticles; i++) {
             particles[i] = new Particle()
           }
@@ -152,30 +114,6 @@ export function WindwardSketch() {
         }
 
         p.draw = () => {
-          let rawAmp = 0
-          let rawBass = 0
-
-          if (audioInitialized && analyser && dataArray) {
-            analyser.getByteFrequencyData(dataArray)
-            
-            // Calculate amplitude
-            let sum = 0
-            for (let i = 0; i < dataArray.length; i++) {
-              sum += dataArray[i]
-            }
-            rawAmp = (sum / dataArray.length) / 255
-
-            // Calculate bass (first few frequency bins)
-            const bassSum = dataArray[0] + dataArray[1] + dataArray[2] + dataArray[3]
-            rawBass = (bassSum / (255 * 4))
-
-            rawAmp = Math.max(0, rawAmp - ampFloor)
-            rawBass = Math.max(0, rawBass - ampFloor * 0.5)
-          }
-
-          smoothAmp = p.lerp(smoothAmp, rawAmp, smoothing)
-          smoothBass = p.lerp(smoothBass, rawBass, smoothing)
-
           p.noStroke()
           p.fill(0, 0, 0, 5)
           p.rect(0, 0, p.width, p.height)
@@ -183,7 +121,7 @@ export function WindwardSketch() {
           p.translate(p.width / 2, p.height / 2)
 
           const noiseScale = p.map(p.mouseX, 0, p.width, 0.001, 0.02)
-          const speedFactor = 0.5 + smoothAmp * ampSensitivity * 8
+          const speedFactor = 0.5 + p.noise(p.frameCount * 0.01) * 0.8
 
           for (let particle of particles) {
             particle.update(noiseScale, speedFactor)
@@ -199,8 +137,6 @@ export function WindwardSketch() {
           if (p.frameCount % 2 === 0) {
             p.push()
             const baseRotation = p.frameCount * 0.01
-            const bassBoost = smoothBass * bassSensitivity * 0.5
-            p.rotate(baseRotation + bassBoost)
 
             for (let j = 0; j < Math.min(sands.length, 100); j++) {
               sands[j].update()
@@ -226,15 +162,6 @@ export function WindwardSketch() {
         }
 
         p.keyPressed = () => {
-          if (p.key === "1") ampSensitivity = Math.min(5, ampSensitivity + 0.2)
-          if (p.key === "2") ampSensitivity = Math.max(0.2, ampSensitivity - 0.2)
-          if (p.key === "3") bassSensitivity = Math.min(5, bassSensitivity + 0.2)
-          if (p.key === "4") bassSensitivity = Math.max(0.2, bassSensitivity - 0.2)
-          if (p.key === "5") smoothing = Math.min(0.5, smoothing + 0.02)
-          if (p.key === "6") smoothing = Math.max(0.02, smoothing - 0.02)
-          if (p.key === "7") ampFloor = Math.min(0.1, ampFloor + 0.005)
-          if (p.key === "8") ampFloor = Math.max(0, ampFloor - 0.005)
-
           if (p.keyCode === p.UP) symmetry = Math.min(12, symmetry + 1)
           if (p.keyCode === p.DOWN) symmetry = Math.max(2, symmetry - 1)
         }
