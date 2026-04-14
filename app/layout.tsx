@@ -44,11 +44,11 @@ export default function RootLayout({
           <Navigation />
           <main className="min-h-screen">{children}</main>
           <footer className="border-t py-6 md:py-0">
-            <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-              <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
+            <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:h-24 md:flex-row md:px-8 lg:px-12">
+              <p className="text-center text-xs leading-loose text-muted-foreground sm:text-sm md:text-left">
                 © 2025 Mister Fields. All rights reserved.
               </p>
-              <p className="text-center text-xs text-muted-foreground md:text-right">
+              <p className="text-center text-xs text-muted-foreground">
                 Built with Next.js and shadcn/ui
               </p>
             </div>
