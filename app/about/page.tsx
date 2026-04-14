@@ -8,13 +8,13 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       {/* Header */}
-      <section className="border-b py-12 md:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="space-y-4 sm:space-y-6 text-center">
-            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+      <section className="border-b py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+          <div className="space-y-6 text-center">
+            <h1 className="font-serif text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
               About
             </h1>
-            <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground">
+            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground">
               Bridging studio practice with emerging technology
             </p>
             <Separator className="mx-auto w-24" />
@@ -23,31 +23,31 @@ export default function AboutPage() {
       </section>
 
       {/* Main Bio */}
-      <section className="py-12 md:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
-            <div className="prose prose-sm sm:prose-base md:prose-lg dark:prose-invert max-w-none space-y-4 sm:space-y-6">
-              <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+      <section className="py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+          <div className="mx-auto max-w-4xl space-y-8">
+            <div className="prose prose-lg dark:prose-invert max-w-none space-y-6">
+              <p className="text-xl leading-relaxed">
                 Mister Fields is a practicing artist and creative technologist whose work bridges studio practice with emerging technology. As a responsible innovator, they build tools that augment human agency while developing a philosophy of practice that keeps human creativity central to technological innovation.
               </p>
 
-              <Separator className="my-6 sm:my-8" />
+              <Separator className="my-8" />
 
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold">Background</h2>
+              <h2 className="font-serif text-3xl font-bold">Background</h2>
               
-              <p className="text-base sm:text-lg leading-relaxed text-foreground">
+              <p className="text-lg leading-relaxed text-foreground">
                 With a background in NLP research and currently pursuing a Masters in Creative Technology at SMU, Mister Fields operates at the intersection of artistic practice and technical capability. Their work encompasses traditional studio practice—paintings and gallery works—alongside deployed software applications and research prototypes.
               </p>
 
-              <p className="text-base sm:text-lg leading-relaxed text-foreground">
+              <p className="text-lg leading-relaxed text-foreground">
                 Recent technical work includes Colorista (color-matching tool for artists), qScribe (adaptive learning through edge AI), and Itenerator (cognitive load optimization). These projects demonstrate a consistent approach: building tools that emerge from real creative needs and amplify human agency rather than automating it away.
               </p>
 
-              <Separator className="my-6 sm:my-8" />
+              <Separator className="my-8" />
 
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold">Philosophy of Practice</h2>
+              <h2 className="font-serif text-3xl font-bold">Philosophy of Practice</h2>
 
-              <p className="text-base sm:text-lg leading-relaxed text-foreground">
+              <p className="text-lg leading-relaxed text-foreground">
                 Where others see AI as automation, Mister Fields sees translation: between languages, skill levels, and cultural values. Their work centers on implementing AI ethics in design—respecting agency, preserving cultural uniqueness, and ensuring human value alignment through constitutional principles.
               </p>
 

@@ -55,13 +55,13 @@ export default function WorkPage() {
   return (
     <div className="flex flex-col">
       {/* Header */}
-      <section className="border-b py-12 md:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="space-y-4 sm:space-y-6 text-center">
-            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+      <section className="border-b py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+          <div className="space-y-6 text-center">
+            <h1 className="font-serif text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
               Studio Work
             </h1>
-            <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground">
+            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground">
               Paintings and multimedia works exploring the intersection of perception, 
               technology, and human experience.
             </p>
