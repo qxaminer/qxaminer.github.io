@@ -75,18 +75,18 @@ export default function Home() {
                 </p>
 
                 {/* Dual Navigation */}
-                <div className="flex flex-col items-center gap-3 pt-8 sm:flex-row sm:gap-4 lg:justify-start">
-                  <Button asChild size="sm" className="w-full sm:w-auto sm:size-lg">
-                    <Link href="/work" className="text-sm sm:text-base">View Studio Work</Link>
+                <div className="flex flex-col items-center gap-4 pt-8 sm:flex-row lg:justify-start">
+                  <Button asChild size="lg" className="w-full sm:w-auto">
+                    <Link href="/work">View Studio Work</Link>
                   </Button>
-                  <Button asChild size="sm" variant="outline" className="w-full sm:w-auto sm:size-lg">
-                    <Link href="/projects" className="text-sm sm:text-base">View Technical Projects</Link>
+                  <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                    <Link href="/projects">View Technical Projects</Link>
                   </Button>
                   <Button
                     type="button"
-                    size="sm"
+                    size="lg"
                     variant="outline"
-                    className="w-full cursor-not-allowed border-muted-foreground/30 bg-muted/30 text-muted-foreground opacity-60 sm:w-auto sm:size-lg"
+                    className="w-full cursor-not-allowed border-muted-foreground/30 bg-muted/30 text-muted-foreground opacity-60 sm:w-auto"
                     disabled
                     aria-disabled="true"
                     title="CV temporarily unavailable"
