@@ -11,7 +11,7 @@ const digitalSketches = [
     title: "pB_windwardMod",
     year: "2024",
     status: "Complete",
-    description: "Kaleidoscopic flow field with audio reactivity and hourglass geometry",
+    description: "Kaleidoscopic flow field with hourglass geometry",
     renderSketch: true,
   },
   {
