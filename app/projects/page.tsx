@@ -103,19 +103,19 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 md:py-24">
-        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-          <div className="grid gap-8 md:grid-cols-2">
+      <section className="py-12 md:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 md:grid-cols-2">
               {projects.map((project) => (
                 <Card
                   key={project.slug}
                   className="group flex flex-col transition-all hover:shadow-lg"
                   style={project.accentColor ? { borderLeft: `4px solid ${project.accentColor}` } : undefined}
                 >
-                  <CardHeader className="space-y-3 p-8">
+                  <CardHeader className="space-y-3 p-4 sm:p-6 md:p-8">
                     <div className="space-y-2">
-                      <div className="flex items-start justify-between gap-4">
-                        <CardTitle className="text-2xl font-bold transition-colors group-hover:text-primary">
+                      <div className="flex items-start justify-between gap-2 sm:gap-4">
+                        <CardTitle className="text-lg sm:text-xl md:text-2xl font-bold transition-colors group-hover:text-primary break-words">
                           {projectTitleOpensNewTab(project) ? (
                             <a
                               href={projectTitleHref(project)}
@@ -128,20 +128,20 @@ export default function ProjectsPage() {
                             <Link href={projectTitleHref(project)}>{project.title}</Link>
                           )}
                         </CardTitle>
-                        <Badge variant="outline" className="shrink-0">{project.category}</Badge>
+                        <Badge variant="outline" className="shrink-0 text-xs">{project.category}</Badge>
                       </div>
                       {project.subtitle && (
-                        <p className="text-sm font-medium text-muted-foreground">
+                        <p className="text-xs sm:text-sm font-medium text-muted-foreground">
                           {project.subtitle}
                         </p>
                       )}
                     </div>
-                    <CardDescription className="text-base leading-relaxed pt-2">
+                    <CardDescription className="text-sm sm:text-base leading-relaxed pt-2">
                       {project.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="flex-1 px-8">
-                    <div className="flex flex-wrap gap-2">
+                  <CardContent className="flex-1 px-4 sm:px-6 md:px-8">
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {project.tags.map((tag) => (
                         <Badge key={tag} variant="secondary" className="text-xs">
                           {tag}
@@ -149,20 +149,22 @@ export default function ProjectsPage() {
                       ))}
                     </div>
                   </CardContent>
-                  <CardFooter className="flex gap-3 p-8 pt-4">
+                  <CardFooter className="flex flex-col gap-2 p-4 sm:p-6 md:p-8 md:pt-4 sm:flex-row">
                     {project.liveUrl && (
-                      <Button asChild size="sm" className="flex-1">
-                        <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Live Demo
+                      <Button asChild size="sm" className="w-full sm:flex-1">
+                        <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm">
+                          <ExternalLink className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+                          <span className="hidden sm:inline">Live Demo</span>
+                          <span className="sm:hidden">Demo</span>
                         </Link>
                       </Button>
                     )}
                     {project.slug === "nik3" && (
-                      <Button asChild size="sm" className="flex-1">
-                        <Link href="/intel">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Demo on Request →
+                      <Button asChild size="sm" className="w-full sm:flex-1">
+                        <Link href="/intel" className="text-xs sm:text-sm">
+                          <ExternalLink className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+                          <span className="hidden sm:inline">Demo on Request</span>
+                          <span className="sm:hidden">Request</span>
                         </Link>
                       </Button>
                     )}
@@ -171,13 +173,13 @@ export default function ProjectsPage() {
                         asChild
                         variant="outline"
                         size="sm"
-                        className={
-                          project.slug === "nik3" ? "flex-1" : project.liveUrl ? "" : "flex-1"
-                        }
+                        className={`text-xs sm:text-sm ${
+                          project.slug === "nik3" ? "w-full sm:flex-1" : project.liveUrl ? "hidden sm:flex" : "w-full sm:flex-1"
+                        }`}
                       >
                         <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="mr-2 h-4 w-4" />
-                          GitHub
+                          <Github className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+                          <span>GitHub</span>
                         </Link>
                       </Button>
                     )}
