@@ -146,6 +146,11 @@ export default function ProjectsPage() {
                           {project.subtitle}
                         </p>
                       )}
+                      {project.status && (
+                        <Badge variant="outline" className="w-fit text-xs">
+                          {project.status}
+                        </Badge>
+                      )}
                     </div>
                     <CardDescription className="text-base leading-relaxed pt-2">
                       {project.description}
