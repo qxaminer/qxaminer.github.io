@@ -38,6 +38,16 @@ const projects = [
     status: "Prototype / Research Phase",
   },
   {
+    title: "SK8-XR",
+    subtitle: "AR Skateboarding Instruction — iPhone LiDAR + ARKit",
+    description: "SK8-XR uses iPhone LiDAR and ARKit to deliver location-aware AR skateboarding instruction. The app overlays technique guidance and motion feedback onto real skating environments, making coaching accessible without a coach present.",
+    tags: ["Unity", "ARKit", "LiDAR", "iPhone"],
+    liveUrl: "/SK8-XR/sk8xr-deck.html",
+    slug: "sk8xr",
+    featured: true,
+    status: "IN PROGRESS — SMU CRCP6380 Capstone",
+  },
+  {
     title: "Giant Shoulders",
     subtitle: "Strategic Open Source Discovery",
     description: "AI-powered discovery system that analyzes the GitHub ecosystem to find open source projects aligned with career goals and learning objectives.",
@@ -198,6 +208,11 @@ export default function Home() {
                         <p className="text-sm font-medium text-muted-foreground">
                           {project.subtitle}
                         </p>
+                        {project.status && (
+                          <Badge variant="outline" className="w-fit text-xs">
+                            {project.status}
+                          </Badge>
+                        )}
                       </div>
                     </CardHeader>
 
