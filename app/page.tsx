@@ -107,7 +107,7 @@ export default function Home() {
               </div>
 
               {/* P5.js Sketch */}
-              <div className="flex w-full max-w-[500px] flex-shrink-0 items-center justify-center lg:w-auto">
+              <div className="flex w-full max-w-full flex-shrink-0 items-center justify-center overflow-hidden sm:max-w-[350px] md:max-w-[420px] lg:w-auto lg:max-w-none">
                 <P5Sketch />
               </div>
             </div>
