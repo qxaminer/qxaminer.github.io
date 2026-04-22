@@ -7,6 +7,16 @@ import { Separator } from "@/components/ui/separator"
 
 const projects = [
   {
+    title: "CamelBeast",
+    subtitle: "Persian-Language OSINT Pipeline",
+    description: "Rust-core corpus analysis pipeline powering nik³. Seven source ingesters, SQLite corpus, cosine similarity scoring, political register classification, and NER rail. Analyzes framing divergence between Iranian state media and diaspora outlets across 21,857 articles from 7 sources. Available for review under NDA.",
+    tags: ["Rust", "SQLite", "NLP", "OSINT", "ParsBERT", "NER"],
+    category: "Research",
+    slug: "camelbeast",
+    accentColor: "#c9a84c",
+    portfolioEntryHref: "/intel" as const,
+  },
+  {
     title: "nik³",
     subtitle: "Language Acquisition Engine",
     description: "A local-first desktop application for systematic vocabulary acquisition through contextual reading. Built on a 97,000-entry lexical database with real-time NLP tokenization, spaced-repetition tracking, and an embedded collection of 21,000+ curated articles.",
