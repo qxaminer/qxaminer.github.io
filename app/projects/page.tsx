@@ -69,7 +69,7 @@ const projects = [
     subtitle: "AR Skateboarding Instruction — iPhone LiDAR + ARKit",
     description: "SK8-XR uses iPhone LiDAR and ARKit to deliver location-aware AR skateboarding instruction. The app overlays technique guidance and motion feedback onto real skating environments, making coaching accessible without a coach present.",
     tags: ["Unity", "ARKit", "LiDAR", "iPhone"],
-    liveUrl: "https://qxaminer.github.io/SK8-XR/sk8xr-deck.html",
+    liveUrl: "https://xanthos.dev/SK8-XR/sk8xr-deck.html",
     category: "Creative Tools",
     slug: "sk8xr",
     accentColor: "#ff6b00",
