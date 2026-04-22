@@ -28,7 +28,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-4xl space-y-8">
             <div className="prose prose-lg dark:prose-invert max-w-none space-y-6">
               <p className="text-xl leading-relaxed">
-                Mister Fields is a practicing artist and creative technologist whose work bridges studio practice with emerging technology. As a responsible innovator, they build tools that augment human agency while developing a philosophy of practice that keeps human creativity central to technological innovation.
+                Patrick Barfield is an intelligence analyst and creative technologist whose work bridges OSINT research and studio practice with emerging technology. As a responsible innovator, he builds tools that augment human agency while developing a philosophy of practice that keeps human creativity central to technological innovation.
               </p>
 
               <Separator className="my-8" />
@@ -36,7 +36,7 @@ export default function AboutPage() {
               <h2 className="font-serif text-3xl font-bold">Background</h2>
               
               <p className="text-lg leading-relaxed text-foreground">
-                With a background in NLP research and currently pursuing a Masters in Creative Technology at SMU, Mister Fields operates at the intersection of artistic practice and technical capability. Their work encompasses traditional studio practice—paintings and gallery works—alongside deployed software applications and research prototypes.
+                With a background in NLP research and currently pursuing a Masters in Creative Technology at SMU, Patrick Barfield operates at the intersection of intelligence analysis, artistic practice, and technical capability. His work encompasses traditional studio practice—paintings and gallery works—alongside deployed software applications and research prototypes.
               </p>
 
               <p className="text-lg leading-relaxed text-foreground">
@@ -48,7 +48,7 @@ export default function AboutPage() {
               <h2 className="font-serif text-3xl font-bold">Philosophy of Practice</h2>
 
               <p className="text-lg leading-relaxed text-foreground">
-                Where others see AI as automation, Mister Fields sees translation: between languages, skill levels, and cultural values. Their work centers on implementing AI ethics in design—respecting agency, preserving cultural uniqueness, and ensuring human value alignment through constitutional principles.
+                Where others see AI as automation, Patrick Barfield sees translation: between languages, skill levels, and cultural values. His work centers on implementing AI ethics in design—respecting agency, preserving cultural uniqueness, and ensuring human value alignment through constitutional principles.
               </p>
 
               <p className="text-lg leading-relaxed text-foreground">

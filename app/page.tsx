@@ -10,6 +10,15 @@ import { P5Sketch } from "@/components/p5-sketch"
 
 const projects = [
   {
+    title: "CamelBeast",
+    subtitle: "Persian-Language OSINT Pipeline",
+    description: "Rust-core corpus analysis pipeline powering nik³. Seven source ingesters, SQLite corpus, cosine similarity scoring, political register classification, and NER rail. Analyzes framing divergence between Iranian state media and diaspora outlets across 21,857 articles from 7 sources. Available for review under NDA.",
+    tags: ["Rust", "SQLite", "NLP", "OSINT", "ParsBERT", "NER"],
+    liveUrl: "/intel",
+    slug: "camelbeast",
+    featured: true,
+  },
+  {
     title: "Colorista",
     subtitle: "AI-Powered Color Matching for Artists",
     description: "Web application that analyzes artwork and recommends specific colored pencils using the Delta-E 2000 algorithm for perceptually accurate color matching. Built in 2 weeks and deployed to production.",
@@ -71,17 +80,17 @@ export default function Home() {
               <div className="flex-1 space-y-8 text-center lg:text-left">
                 <div className="space-y-4">
                   <h1 className="font-serif text-6xl font-bold tracking-tight sm:text-7xl lg:text-8xl">
-                    Mister Fields
+                    Patrick Barfield
                   </h1>
                   <p className="text-2xl text-muted-foreground sm:text-3xl">
-                    Artist & Creative Technologist
+                    Intelligence Analyst + Creative Technologist
                   </p>
                 </div>
 
                 <Separator className="mx-auto w-24 lg:mx-0" />
 
                 <p className="mx-auto max-w-2xl text-xl leading-relaxed text-foreground lg:mx-0">
-                  Mister Fields is a practicing artist and creative technologist whose work bridges studio practice with emerging technology. As a responsible innovator, they build tools that augment human agency while developing a philosophy of practice that keeps human creativity central to technological innovation.
+                  Patrick Barfield is an intelligence analyst and creative technologist whose work bridges OSINT research and studio practice with emerging technology. As a responsible innovator, he builds tools that augment human agency while developing a philosophy of practice that keeps human creativity central to technological innovation.
                 </p>
 
                 {/* Dual Navigation */}
