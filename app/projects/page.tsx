@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { ExternalLink, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -73,6 +74,7 @@ const projects = [
     githubUrl: "https://github.com/qxaminer/GiantShoulders",
     category: "Research",
     slug: "giant-shoulders",
+    image: "/giantsShoulders.png",
   },
   {
     title: "SK8-XR",
@@ -133,6 +135,16 @@ export default function ProjectsPage() {
                   className="group flex flex-col transition-all hover:shadow-lg"
                   style={project.accentColor ? { borderLeft: `4px solid ${project.accentColor}` } : undefined}
                 >
+                  {project.image && (
+                    <div className="relative h-64 w-full overflow-hidden rounded-t-lg">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
                   <CardHeader className="space-y-3 p-8">
                     <div className="space-y-2">
                       <div className="flex items-start justify-between gap-4">
