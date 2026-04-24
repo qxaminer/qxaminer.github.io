@@ -156,13 +156,12 @@ export default function ProjectsPage() {
                   style={project.accentColor ? { borderLeft: `4px solid ${project.accentColor}` } : undefined}
                 >
                   {project.image && (
-                    <div className="w-full overflow-hidden rounded-t-lg">
+                    <div className="relative h-48 w-full overflow-hidden rounded-t-lg">
                       <Image
                         src={project.image}
                         alt={project.title}
-                        width={900}
-                        height={1200}
-                        className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                        fill
+                        className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
                   )}
