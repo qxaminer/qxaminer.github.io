@@ -219,12 +219,6 @@ export default function ContactPage() {
               I aim to respond to all inquiries within 2–3 business days. For urgent matters, please say so in your
               message.
             </p>
-            <p className="text-xs text-muted-foreground/70">
-              Verified recruiters:{" "}
-              <Link href="/intel" className="underline-offset-2 hover:underline">
-                restricted research →
-              </Link>
-            </p>
           </div>
         </div>
       </section>

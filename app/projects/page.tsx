@@ -9,25 +9,22 @@ import { Separator } from "@/components/ui/separator"
 const projects = [
   {
     title: "CamelBeast",
-    subtitle: "Persian-Language OSINT Pipeline",
-    description: "Rust-core corpus analysis pipeline powering nik³. Seven source ingesters, SQLite corpus, cosine similarity scoring, political register classification, and NER rail. Analyzes framing divergence between Iranian state media and diaspora outlets across 21,857 articles from 7 sources. Available for review under NDA.",
-    tags: ["Rust", "SQLite", "NLP", "OSINT", "ParsBERT", "NER"],
+    subtitle: "Persian Corpus Analysis Pipeline",
+    description: "Rust-core corpus analysis pipeline powering nik³. Seven source ingesters, SQLite corpus, cosine similarity scoring, political register classification, and NER rail. Processes 21,857 articles from 7 sources. Available for review under NDA.",
+    tags: ["Rust", "SQLite", "NLP", "ParsBERT", "NER"],
     category: "Research",
     slug: "camelbeast",
     accentColor: "#c9a84c",
-    portfolioEntryHref: "/intel" as const,
   },
   {
     title: "nik³",
     subtitle: "Language Acquisition Engine",
-    description: "A local-first desktop application for systematic vocabulary acquisition through contextual reading. Built on a 97,000-entry lexical database with real-time NLP tokenization, spaced-repetition tracking, and an embedded collection of 21,000+ curated articles.",
+    description: "Persian language acquisition, built for serious learners. A living corpus of 16,000+ articles feeding contextual word acquisition — vocabulary learned in the wild, not in a vacuum. For anyone who wants to read the world in Farsi, not just pass a test.",
     tags: ["Rust", "Tauri", "SQLite", "Python", "NLP", "TypeScript"],
     githubUrl: "https://github.com/qxaminer/nik3",
     category: "Research",
     slug: "nik3",
     accentColor: "#c9a84c",
-    /** Gate on this site first; after password, /intel shows briefing + demo links. */
-    portfolioEntryHref: "/intel" as const,
   },
   {
     title: "Colorista",
@@ -66,9 +63,41 @@ const projects = [
     slug: "somekindablue-gan",
   },
   {
+    title: "Dulce-A",
+    subtitle: "Consent-Layered AI Introduction Protocol",
+    description: "A consent-layered protocol for introducing AI into human relationships. Because the first conversation between a person and an AI shapes everything that follows. Built to preserve agency, establish trust, and keep humans at the center.",
+    tags: ["Protocol Design", "AI Ethics", "Human-AI Interaction", "Python"],
+    category: "Research",
+    slug: "dulce-a",
+  },
+  {
+    title: "QoZ",
+    subtitle: "Resource-Aware LLM Orchestrator",
+    description: "A resource-aware LLM orchestrator. The insight: the delta between what different models produce is itself the product. QoZ routes, compares, and synthesizes — making the most of what you have without burning compute you don't.",
+    tags: ["LLM Orchestration", "Python", "Multi-model AI", "TypeScript"],
+    category: "Research",
+    slug: "qoz",
+  },
+  {
+    title: "GhostMaus",
+    subtitle: "Screen-Aware Learning Overlay",
+    description: "A screen-aware learning overlay that fades as you master. Trimodal guidance that reveals multiple paths, then gets out of your way. Built on a simple belief: the best tool teaches you not to need it.",
+    tags: ["Electron", "JavaScript", "UX Design", "Pedagogy"],
+    category: "Creative Tools",
+    slug: "ghostmaus",
+  },
+  {
+    title: "Lucint",
+    subtitle: "End-of-Session Mastery Ritual",
+    description: "A mastery engine for builders. End-of-session ritual that turns reflection into momentum — five honest questions, AI coaching back, four docs written automatically. Because shipping without understanding is just moving fast in the wrong direction.",
+    tags: ["AI Coaching", "Python", "Developer Tools", "Automation"],
+    category: "Creative Tools",
+    slug: "lucint",
+  },
+  {
     title: "Giant Shoulders",
     subtitle: "Strategic Open Source Discovery",
-    description: "AI-powered discovery system that analyzes the GitHub ecosystem to find open source projects aligned with career goals and learning objectives. Transforms repository browsing into strategic opportunity analysis.",
+    description: "Strategic open source discovery. Stop browsing randomly — find the repos that actually advance where you're going. AI-powered alignment between your trajectory and the GitHub ecosystem.",
     tags: ["LangChain", "Streamlit", "GitHub API", "Python"],
     liveUrl: "https://qxaminer-giant-shoulders.streamlit.app",
     githubUrl: "https://github.com/qxaminer/GiantShoulders",
@@ -79,7 +108,7 @@ const projects = [
   {
     title: "SK8-XR",
     subtitle: "AR Skateboarding Instruction — iPhone LiDAR + ARKit",
-    description: "SK8-XR uses iPhone LiDAR and ARKit to deliver location-aware AR skateboarding instruction. The app overlays technique guidance and motion feedback onto real skating environments, making coaching accessible without a coach present.",
+    description: "iPhone LiDAR meets skateboarding pedagogy. Mocap trick overlays, difficulty and injury ratings, and a crawl/walk/run learning framework that meets riders where they are. Embodied learning for a discipline that's always been about watching, then doing.",
     tags: ["Unity", "ARKit", "LiDAR", "iPhone"],
     liveUrl: "https://xanthos.dev/SK8-XR/sk8xr-deck.html",
     category: "Creative Tools",
@@ -89,21 +118,12 @@ const projects = [
   },
 ]
 
-function projectTitleHref(project: (typeof projects)[number]): string {
-  return (
-    project.portfolioEntryHref ??
-    project.liveUrl ??
-    project.githubUrl ??
-    `/projects/${project.slug}`
-  )
+function projectHref(project: (typeof projects)[number]): string {
+  return project.liveUrl ?? project.githubUrl ?? `/projects/${project.slug}`
 }
 
-/** Open GitHub/live in a new tab; same-site gates (e.g. /intel) stay in-tab. */
-function projectTitleOpensNewTab(project: (typeof projects)[number]): boolean {
-  return (
-    project.portfolioEntryHref == null &&
-    !!(project.liveUrl || project.githubUrl)
-  )
+function projectOpensNewTab(project: (typeof projects)[number]): boolean {
+  return !!(project.liveUrl || project.githubUrl)
 }
 
 export default function ProjectsPage() {
@@ -150,16 +170,16 @@ export default function ProjectsPage() {
                     <div className="space-y-2">
                       <div className="flex items-start justify-between gap-4">
                         <CardTitle className="text-2xl font-bold transition-colors group-hover:text-primary">
-                          {projectTitleOpensNewTab(project) ? (
+                          {projectOpensNewTab(project) ? (
                             <a
-                              href={projectTitleHref(project)}
+                              href={projectHref(project)}
                               target="_blank"
                               rel="noopener noreferrer"
                             >
                               {project.title}
                             </a>
                           ) : (
-                            <Link href={projectTitleHref(project)}>{project.title}</Link>
+                            <Link href={projectHref(project)}>{project.title}</Link>
                           )}
                         </CardTitle>
                         <Badge variant="outline" className="shrink-0">{project.category}</Badge>
@@ -197,23 +217,8 @@ export default function ProjectsPage() {
                         </Link>
                       </Button>
                     )}
-                    {project.slug === "nik3" && (
-                      <Button asChild size="sm" className="flex-1">
-                        <Link href="/intel">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Demo on Request →
-                        </Link>
-                      </Button>
-                    )}
                     {project.githubUrl && (
-                      <Button
-                        asChild
-                        variant="outline"
-                        size="sm"
-                        className={
-                          project.slug === "nik3" ? "flex-1" : project.liveUrl ? "" : "flex-1"
-                        }
-                      >
+                      <Button asChild variant="outline" size="sm" className={project.liveUrl ? "" : "flex-1"}>
                         <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                           <Github className="mr-2 h-4 w-4" />
                           GitHub
