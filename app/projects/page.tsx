@@ -9,9 +9,9 @@ import { Separator } from "@/components/ui/separator"
 const projects = [
   {
     title: "CamelBeast",
-    subtitle: "Persian Corpus Analysis Pipeline",
-    description: "Rust-core corpus analysis pipeline powering nik³. Seven source ingesters, SQLite corpus, cosine similarity scoring, political register classification, and NER rail. Processes 21,857 articles from 7 sources. Available for review under NDA.",
-    tags: ["Rust", "SQLite", "NLP", "ParsBERT", "NER"],
+    subtitle: "Foreign-Language Corpus Analysis Pipeline",
+    description: "Rust-core corpus analysis pipeline powering nik³. Multi-source ingestion, SQLite corpus, cosine similarity scoring, register classification, and transformer-based NER. Available for review under NDA.",
+    tags: ["Rust", "SQLite", "NLP", "Corpus Analysis", "NER"],
     category: "Research",
     slug: "camelbeast",
     accentColor: "#c9a84c",
@@ -19,9 +19,8 @@ const projects = [
   {
     title: "nik³",
     subtitle: "Language Acquisition Engine",
-    description: "Persian language acquisition, built for serious learners. A living corpus of 16,000+ articles feeding contextual word acquisition — vocabulary learned in the wild, not in a vacuum. For anyone who wants to read the world in Farsi, not just pass a test.",
+    description: "Foreign-language acquisition, built for serious learners. A living corpus of 16,000+ articles feeding contextual word acquisition — vocabulary learned in the wild, not in a vacuum. For anyone who wants to read authentic sources, not just pass a test.",
     tags: ["Rust", "Tauri", "SQLite", "Python", "NLP", "TypeScript"],
-    githubUrl: "https://github.com/qxaminer/nik3",
     category: "Research",
     slug: "nik3",
     accentColor: "#c9a84c",
@@ -99,8 +98,6 @@ const projects = [
     subtitle: "Strategic Open Source Discovery",
     description: "Strategic open source discovery. Stop browsing randomly — find the repos that actually advance where you're going. AI-powered alignment between your trajectory and the GitHub ecosystem.",
     tags: ["LangChain", "Streamlit", "GitHub API", "Python"],
-    liveUrl: "https://qxaminer-giant-shoulders.streamlit.app",
-    githubUrl: "https://github.com/qxaminer/GiantShoulders",
     category: "Research",
     slug: "giant-shoulders",
     image: "/giantsShoulders.png",
@@ -114,12 +111,11 @@ const projects = [
     category: "Creative Tools",
     slug: "sk8xr",
     accentColor: "#ff6b00",
-    status: "IN PROGRESS — SMU CRCP6380 Capstone",
   },
 ]
 
-function projectHref(project: (typeof projects)[number]): string {
-  return project.liveUrl ?? project.githubUrl ?? `/projects/${project.slug}`
+function projectHref(project: (typeof projects)[number]): string | undefined {
+  return project.liveUrl ?? project.githubUrl
 }
 
 function projectOpensNewTab(project: (typeof projects)[number]): boolean {
@@ -152,7 +148,7 @@ export default function ProjectsPage() {
               {projects.map((project) => (
                 <Card
                   key={project.slug}
-                  className="group flex flex-col transition-all hover:shadow-lg"
+                  className="group min-w-0 overflow-hidden flex flex-col transition-all hover:shadow-lg"
                   style={project.accentColor ? { borderLeft: `4px solid ${project.accentColor}` } : undefined}
                 >
                   {project.image && (
@@ -167,8 +163,8 @@ export default function ProjectsPage() {
                   )}
                   <CardHeader className="space-y-3 p-8">
                     <div className="space-y-2">
-                      <div className="flex items-start justify-between gap-4">
-                        <CardTitle className="text-2xl font-bold transition-colors group-hover:text-primary">
+                      <div className="flex min-w-0 items-start justify-between gap-4">
+                        <CardTitle className="min-w-0 break-words text-2xl font-bold transition-colors group-hover:text-primary">
                           {projectOpensNewTab(project) ? (
                             <a
                               href={projectHref(project)}
@@ -178,7 +174,7 @@ export default function ProjectsPage() {
                               {project.title}
                             </a>
                           ) : (
-                            <Link href={projectHref(project)}>{project.title}</Link>
+                            project.title
                           )}
                         </CardTitle>
                         <Badge variant="outline" className="shrink-0">{project.category}</Badge>
@@ -187,11 +183,6 @@ export default function ProjectsPage() {
                         <p className="text-sm font-medium text-muted-foreground">
                           {project.subtitle}
                         </p>
-                      )}
-                      {project.status && (
-                        <Badge variant="outline" className="w-fit text-xs">
-                          {project.status}
-                        </Badge>
                       )}
                     </div>
                     <CardDescription className="text-base leading-relaxed pt-2">

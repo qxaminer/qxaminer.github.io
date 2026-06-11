@@ -139,11 +139,6 @@ export default function AboutPage() {
                   Get in Touch
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
-                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
-                  Download CV
-                </a>
-              </Button>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Github, Linkedin } from "lucide-react"
+import { Mail, Github } from "lucide-react"
 
 const FORMSPREE_ACTION = "https://formspree.io/f/meepyoev"
 
@@ -191,17 +191,6 @@ export default function ContactPage() {
                     >
                       <Github className="h-5 w-5" />
                       GitHub
-                    </a>
-                  </Button>
-                  <Button asChild variant="outline" size="lg">
-                    <a
-                      href="https://www.linkedin.com/in/patrickbarfield/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="gap-2"
-                    >
-                      <Linkedin className="h-5 w-5" />
-                      LinkedIn
                     </a>
                   </Button>
                 </div>

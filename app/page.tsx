@@ -1,19 +1,17 @@
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, ExternalLink, Github, Mail } from "lucide-react"
+import { ArrowRight, ExternalLink, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { P5Sketch } from "@/components/p5-sketch"
 
 const projects = [
   {
     title: "CamelBeast",
-    subtitle: "Persian Corpus Analysis Pipeline",
-    description: "Rust-core corpus analysis pipeline powering nik³. Seven source ingesters, SQLite corpus, cosine similarity scoring, political register classification, and NER rail. Processes 21,857 articles from 7 sources. Available for review under NDA.",
-    tags: ["Rust", "SQLite", "NLP", "ParsBERT", "NER"],
+    subtitle: "Foreign-Language Corpus Analysis Pipeline",
+    description: "Rust-core corpus analysis pipeline powering nik³. Multi-source ingestion, SQLite corpus, cosine similarity scoring, register classification, and transformer-based NER. Available for review under NDA.",
+    tags: ["Rust", "SQLite", "NLP", "Corpus Analysis", "NER"],
     slug: "camelbeast",
     featured: true,
   },
@@ -53,15 +51,12 @@ const projects = [
     liveUrl: "/SK8-XR/sk8xr-deck.html",
     slug: "sk8xr",
     featured: true,
-    status: "IN PROGRESS — SMU CRCP6380 Capstone",
   },
   {
     title: "Giant Shoulders",
     subtitle: "Strategic Open Source Discovery",
     description: "AI-powered discovery system that analyzes the GitHub ecosystem to find open source projects aligned with career goals and learning objectives.",
     tags: ["LangChain", "Streamlit", "GitHub API", "Python"],
-    liveUrl: "https://qxaminer-giant-shoulders.streamlit.app",
-    githubUrl: "https://github.com/qxaminer/GiantShoulders",
     slug: "giant-shoulders",
     featured: false,
   },
@@ -100,22 +95,11 @@ export default function Home() {
                   <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                     <Link href="/projects">View Technical Projects</Link>
                   </Button>
-                  <Button
-                    type="button"
-                    size="lg"
-                    variant="outline"
-                    className="w-full cursor-not-allowed border-muted-foreground/30 bg-muted/30 text-muted-foreground opacity-60 sm:w-auto"
-                    disabled
-                    aria-disabled="true"
-                    title="CV temporarily unavailable"
-                  >
-                    Download CV
-                  </Button>
                 </div>
               </div>
 
               {/* P5.js Sketch */}
-              <div className="flex w-full max-w-full flex-shrink-0 items-center justify-center overflow-hidden sm:max-w-[350px] md:max-w-[420px] lg:w-auto lg:max-w-none">
+              <div className="flex w-full max-w-full flex-shrink-0 items-center justify-center overflow-hidden sm:max-w-[350px] md:max-w-[420px] lg:w-[48%] lg:max-w-[600px]">
                 <P5Sketch />
               </div>
             </div>
@@ -203,15 +187,17 @@ export default function Home() {
                     <CardHeader className="space-y-3 p-6">
                       <div className="space-y-1.5">
                         <CardTitle className="text-2xl font-bold transition-colors group-hover:text-primary">
-                          <Link
-                            href={project.liveUrl || project.githubUrl || `/projects/${project.slug}`}
-                            target={project.liveUrl || project.githubUrl ? "_blank" : undefined}
-                            rel={
-                              project.liveUrl || project.githubUrl ? "noopener noreferrer" : undefined
-                            }
-                          >
-                            {project.title}
-                          </Link>
+                          {project.liveUrl || project.githubUrl ? (
+                            <Link
+                              href={(project.liveUrl || project.githubUrl)!}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {project.title}
+                            </Link>
+                          ) : (
+                            project.title
+                          )}
                         </CardTitle>
                         <p className="text-sm font-medium text-muted-foreground">
                           {project.subtitle}

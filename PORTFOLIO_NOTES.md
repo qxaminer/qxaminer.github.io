@@ -70,7 +70,6 @@ This portfolio has been refined into a professional, gallery-quality dual-identi
 
 ### 6. Contact Page (`/contact`) ✅
 **New page created** with:
-- Primary email contact (overtgreen@gmail.com)
 - Inquiry categories:
   - Studio Work & Commissions
   - Technical Collaboration
@@ -199,4 +198,3 @@ All 8 TODO items completed:
 6. ✅ Contact page created
 7. ✅ Typography enhanced
 8. ✅ Final polish complete
-

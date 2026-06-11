@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { loadP5 } from "@/lib/load-p5"
 
 export function P5Sketch() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -9,19 +10,26 @@ export function P5Sketch() {
   useEffect(() => {
     let cancelled = false
     
-    // Dynamically import p5 only on client side
-    import("p5").then((p5Module) => {
+    loadP5().then((p5) => {
       if (cancelled) return
-      
-      const p5 = p5Module.default
 
       const sketch = (p: any) => {
         let currentDemo = 0
-        let maxDemos = 9 // 3 transforms × 3 shapes
+        const maxDemos = 9 // 3 transforms × 3 shapes
         let time = 0
 
+        const canvasSize = () => {
+          const availableWidth =
+            containerRef.current?.clientWidth ||
+            containerRef.current?.parentElement?.clientWidth ||
+            Math.max(window.innerWidth - 48, 0)
+          const width = Math.min(availableWidth, 600)
+          return { width, height: width * 0.75 }
+        }
+
         p.setup = () => {
-          const canvas = p.createCanvas(600, 450)
+          const { width, height } = canvasSize()
+          const canvas = p.createCanvas(width, height)
           if (containerRef.current) {
             canvas.parent(containerRef.current)
           }
@@ -46,12 +54,8 @@ export function P5Sketch() {
         }
 
         p.windowResized = () => {
-          // Adjust canvas size on window resize if needed
-          if (window.innerWidth < 768) {
-            p.resizeCanvas(Math.min(window.innerWidth - 32, 600), 450)
-          } else {
-            p.resizeCanvas(600, 450)
-          }
+          const { width, height } = canvasSize()
+          p.resizeCanvas(width, height)
         }
 
         const runDemo = (p: any, demoNum: number, time: number) => {
@@ -181,7 +185,7 @@ export function P5Sketch() {
   return (
     <div
       ref={containerRef}
-      className="rounded-lg border-2 border-border bg-card shadow-lg transition-shadow hover:shadow-xl"
+      className="aspect-[4/3] w-full max-w-[600px] rounded-lg border-2 border-border bg-card shadow-lg transition-shadow hover:shadow-xl"
       style={{
         maxWidth: "100%",
         overflow: "hidden",

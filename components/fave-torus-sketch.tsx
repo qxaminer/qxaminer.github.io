@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { loadP5WebGL } from "@/lib/load-p5"
 
 export function FaveTorusSketch({ fullscreen = false }: { fullscreen?: boolean } = {}) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -9,10 +10,8 @@ export function FaveTorusSketch({ fullscreen = false }: { fullscreen?: boolean }
     let cancelled = false
     let p5Instance: any = null
 
-    import("p5").then((p5Module) => {
+    loadP5WebGL().then((p5) => {
       if (cancelled) return
-
-      const p5 = p5Module.default
 
       const sketch = (p: any) => {
         const cols = 3
